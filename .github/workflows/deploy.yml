@@ -1,0 +1,41 @@
+name: Generate and Commit Markdown
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  generate-and-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Git
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+    - name: Find and process folders
+      run: |
+        for dir in $(find . -type d -name 'uke_[0-9]*'); do
+          cd "$dir"
+          if [ -f generate-md.sh ]; then
+            chmod +x generate-md.sh
+            ./generate-md.sh
+            if [ -f generated.md ]; then
+              mv generated.md README.md
+              git add README.md
+              git commit -m "Update README.md for $dir"
+            fi
+          fi
+          cd - > /dev/null
+        done
+
+    - name: Push changes
+      uses: ad-m/github-push-action@v0.6.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: main

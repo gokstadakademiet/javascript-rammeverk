@@ -3,7 +3,7 @@
 ## Innholdsfortegnelse
 - [Om kurset](#om-kurset)
 - [Ukesoppgaver](#ukesoppgaver)
-  - [Uke 1](./uke_1)
+  - [Uke 1](./uke_1#oppgavesett-interaktiv-online-cv-webapplikasjonn)
   - [Uke 2](./uke_2)
   - [Uke 3](./uke_3)
   - [Uke 4](./uke_4)
