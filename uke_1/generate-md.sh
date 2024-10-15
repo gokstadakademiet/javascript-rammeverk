@@ -1,7 +1,7 @@
 #!/bin/bash
 
 CURRENT_DIR="$(dirname "$0")"
-SOURCE_DIR="$CURRENT_DIR/md/1-innforing-react" 
+SOURCE_DIR="$CURRENT_DIR/md/veiledet-oppgave" 
 TARGET_FILE="generated.md"
 
 echo "Generating markdown file from files in $SOURCE_DIR"

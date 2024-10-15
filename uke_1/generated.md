@@ -956,7 +956,7 @@ export default App;
 
 ### Oppgave 3: Custom Hook for CV Data
 
-I denne oppgaven skal du lage en egendefinert hook kalt `useCVData` som lar deg lagre og hente CV-data. En custom hook er en funksjon som bruker React hooks og lar deg gjenbruke logikk på tvers av komponenter. Denne hooken bør ha funksjoner for å legge til ferdigheter og oppdatere grunnleggende informasjon. Dette gjør koden mer modulær og gjenbrukbar. Hooken bør lages i en `/hooks` mappe og filen skal hete `useCVData.js`.hoo
+I denne oppgaven skal du implementere en egendefinert hook kalt `useCVData` for å sentralisere og administrere CV-data ved hjelp av `useState`-hooken. En egendefinert hook er en funksjon som bruker React hooks og lar deg gjenbruke logikk på tvers av komponenter. `useCVData` skal inkludere funksjoner for å legge til ferdigheter og oppdatere grunnleggende informasjon, noe som gjør koden mer modulær og gjenbrukbar. Plasser denne hooken i en mappe kalt `/hooks` og navngi filen `useCVData.js`.
 
 > [!NOTE]  
 > Custom hooks er en kraftig måte å gjenbruke logikk på tvers av komponenter. Sørg for å forstå hvordan de fungerer og hvordan de kan forbedre koden din.
