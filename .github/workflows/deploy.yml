@@ -26,9 +26,8 @@ jobs:
             chmod +x generate-md.sh
             ./generate-md.sh
             if [ -f generated.md ]; then
-              mv generated.md README.md
-              git add README.md
-              git commit -m "Update README.md for $dir"
+              git add generated.md
+              git commit -m "Update generated.md for $dir"
             fi
           fi
           cd - > /dev/null
