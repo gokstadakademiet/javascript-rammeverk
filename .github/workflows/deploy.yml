@@ -25,9 +25,9 @@ jobs:
           if [ -f generate-md.sh ]; then
             chmod +x generate-md.sh
             ./generate-md.sh
-            if [ -f generated.md ]; then
-              git add generated.md
-              git commit -m "Update generated.md for $dir"
+            if [ -f ukesoppgaver.md ]; then
+              git add ukesoppgaver.md
+              git commit -m "Update ukesoppgaver.md for $dir"
             fi
           fi
           cd - > /dev/null
