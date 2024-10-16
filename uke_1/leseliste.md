@@ -39,25 +39,24 @@ Vi oppfordrer deg til å lese gjennom disse artiklene grundig, da de vil gi deg 
 
 ### Components
 - [Your First Component](https://react.dev/learn/your-first-component)
-
-> [!IMPORTANT]  
-> Sørg for å forstå konseptet med komponenter og hvordan de brukes i React.
+- [Components & Templates](https://www.youtube.com/watch?v=9D1x7-2FmTA)
 
 ### Props
 
 - [Passing Props to a Component](https://react.dev/learn/passing-props-to-a-component)
+- [Props](https://www.youtube.com/watch?v=PHaECbrKgs0)
 
 > [!IMPORTANT]  
 > Props er en viktig del av React som lar deg sende data fra en komponent til en annen. Sørg for å forstå hvordan props fungerer, da de er essensielle for å bygge dynamiske og gjenbrukbare komponenter.
 
 
 ### Event-håndtering / Callbacks
-TODO
-    - **Oppgave:** Les om hvordan event-håndtering fungerer i React, og prøv å implementere en enkel knapp som håndterer klikkhendelser.
-    - **Hvorfor:** Event-håndtering er en grunnleggende del av å lage interaktive brukergrensesnitt i React.
+- [Functions as props (callbacks)](https://www.youtube.com/watch?v=CWEOYFzgOJs)
+- [Basic overview of how callback functions work in React.js](https://www.linkedin.com/pulse/basic-overview-how-callback-functions-work-reactjs-hasitha-madusanka/)
 
 ### Klassekomponenter vs Funksjonelle komponenter i React
 - [Class Components vs Functional Components in React (Which is better? - Beginner's Guide)](https://www.youtube.com/watch?v=yc6elaGOoGQ)
+- [React Components](https://www.geeksforgeeks.org/reactjs-components/)
 
 > [!NOTE]  
 > Funksjonelle komponenter er nå den foretrukne måten å skrive komponenter på i moderne React.
@@ -77,6 +76,7 @@ TODO
 
 ### Forståelse av useState Hook
 - [React JS Essential Training (kapittel 1, 2 og 3)](https://www.linkedin.com/learning/react-js-essential-training-14836121/understanding-the-usestate-hook)
+- [Using State (useState hook)](https://www.youtube.com/watch?v=4pO-HcG2igk)
 
 > [!TIP]
 > Prøv å implementere en enkel tellerkomponent ved hjelp av `useState` etter å ha lest artiklene.
