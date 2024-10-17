@@ -4,3 +4,5 @@ notes.md
 **/.generated/**
 */test
 **/raw
+uke_*
+!uke_1
