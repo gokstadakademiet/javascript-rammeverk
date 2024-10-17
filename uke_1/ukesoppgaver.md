@@ -1,5 +1,4 @@
-# Oppgavesett: Interaktiv Online CV Webapplikasjon
-
+# Oppgavesett: Interaktiv Online CV Webapplikasjon\n
 ## Innføring i introduksjon til `React`
 
 ### Oppgave 1: Installasjon
@@ -297,9 +296,7 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
     export default App;
     ```
 
-
-
-
+\n\n
 ## Innføring i `Components` & `Props` i React
 
 ### Oppgave 1: Oppsett av Prosjektstruktur
@@ -791,9 +788,7 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
    export default App;
    ```
 
-   </details>
-
-
+   </details>\n\n
 ## Innføring i React `Hooks: useState`
 
 ### Oppgave 1: Vis CV-informasjon
@@ -1313,6 +1308,4 @@ export default App;
 ```
 
 </details>
-
-
-
+\n\n
