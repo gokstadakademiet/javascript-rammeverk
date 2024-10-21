@@ -26,17 +26,17 @@
       - [Bruke Props i Klassekomponenter](#bruke-props-i-klassekomponenter)
       - [Fordeler med Props](#fordeler-med-props)
 3. [Innføring i React `Hooks: useState`](#3-innføring-i-react-hooks-usestate)
-  - [Hva er `useState`?](#hva-er-usestate)
-  - [Hvordan fungerer `useState`?](#hvordan-fungerer-usestate)
-  - [Når bør du bruke `useState`?](#når-bør-du-bruke-usestate)
-  - [`prevState` i React](#prevstate-i-react)
-  - [`useState` med arrays og objekter](#usestate-med-arrays-og-objekter)
-    - [Arrays](#arrays)
-    - [Objekter](#objekter)
-  - [State i React: Klassekomponenter vs Funksjonskomponenter](#state-i-react-klassekomponenter-vs-funksjonskomponenter)
-    - [Klassekomponenter](#klassekomponenter)
-    - [Funksjonskomponenter med useState](#funksjonskomponenter-med-usestate)
-    - [Sammenligning](#sammenligning)
+    - [Hva er `useState`?](#hva-er-usestate)
+    - [Hvordan fungerer `useState`?](#hvordan-fungerer-usestate)
+    - [Når bør du bruke `useState`?](#når-bør-du-bruke-usestate)
+    - [`prevState` i React](#prevstate-i-react)
+    - [`useState` med arrays og objekter](#usestate-med-arrays-og-objekter)
+      - [Arrays](#arrays)
+      - [Objekter](#objekter)
+    - [State i React: Klassekomponenter vs Funksjonskomponenter](#state-i-react-klassekomponenter-vs-funksjonskomponenter)
+      - [Klassekomponenter](#klassekomponenter)
+      - [Funksjonskomponenter med useState](#funksjonskomponenter-med-usestate)
+      - [Sammenligning](#sammenligning)
 
 
 # **1. Innføring i introduksjon til `React`**
@@ -354,7 +354,7 @@ Props i React gir en kraftig, fleksibel og pålitelig måte å overføre data me
 - [Offisiell React-dokumentasjon for komponenter og props](https://reactjs.org/docs/components-and-props.html)
 - [Offisiell React-dokumentasjon for props](https://reactjs.org/docs/components-and-props.html)
 
-# Innføring i React `Hooks: useState`
+# **3. Innføring i React `Hooks: useState`**
 
 Reacts `useState` er en av de grunnleggende Hooks som introduserer statshåndtering i funksjonskomponenter.
 

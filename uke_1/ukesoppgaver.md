@@ -1,4 +1,4 @@
-# Oppgavesett: Interaktiv Online CV Webapplikasjon\n
+# Oppgavesett: Interaktiv Online CV Webapplikasjon
 ## Innføring i introduksjon til `React`
 
 ### Oppgave 1: Installasjon
@@ -25,6 +25,7 @@
 
 1. **Opprett prosjektet**  
     For å opprette et nytt React-prosjekt med Vite, kjør følgende kommando i terminalen:
+
     ```bash
     npm create vite@latest online-cv
     ```
@@ -36,7 +37,7 @@
 > [!IMPORTANT]  
 > Velg `React`, og deretter `Javascript`.
 
-    Dette vil opprette en ny mappe kalt `online-cv` med alle nødvendige filer og avhengigheter for et React-prosjekt som bruker Javascript.
+   Dette vil opprette en ny mappe kalt `online-cv` med alle nødvendige filer og avhengigheter for et React-prosjekt som bruker Javascript.
 
 2. **Naviger til prosjektmappen**  
     Gå inn i prosjektmappen ved å kjøre:
@@ -296,7 +297,6 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
     export default App;
     ```
 
-\n\n
 ## Innføring i `Components` & `Props` i React
 
 ### Oppgave 1: Oppsett av Prosjektstruktur
@@ -380,11 +380,11 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
    
    function App() {
       return (
-   +    <div>
+        <div>
          <h1>Min App</h1>
          <Education school="MIT" degree="Bachelor of Science" />
    +      <Skills skills={['JavaScript', 'React', 'Node.js']} />
-      </div>
+        </div>
       );
    }
    ```
@@ -725,9 +725,9 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
    function App() {
    +  const [skills, setSkills] = useState(['JavaScript', 'React', 'Node.js']);
    +
-      const handleSkillClick = (skill) => {
-      alert(`Du klikket på: ${skill}`);
-      };
+   -  const handleSkillClick = (skill) => {
+   -  alert(`Du klikket på: ${skill}`);
+   -  };
    
    +  const handleDeleteSkill = (index) => {
    +    setSkills(skills.filter((_, i) => i !== index));
@@ -741,7 +741,7 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
          <h1>Min App</h1>
          <Education school="MIT" degree="Bachelor of Science" />
    -      <Skills skills={['JavaScript', 'React', 'Node.js']} onSkillClick={handleSkillClick} />
-   +      <Skills skills={skills} onSkillClick={handleSkillClick} onDeleteSkill={handleDeleteSkill} />
+   +      <Skills skills={skills} onDeleteSkill={handleDeleteSkill} />
          <Projects projects={projects} />
          <Footer year={2024} />
       </div>
@@ -761,11 +761,7 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
    function App() {
      const [skills, setSkills] = useState(['JavaScript', 'React', 'Node.js']);
 
-     const handleSkillClick = (skill) => {
-       alert(`Du klikket på: ${skill}`);
-     };
-
-     const handleDeleteSkill = (index) => {
+       const handleDeleteSkill = (index) => {
        setSkills(skills.filter((_, i) => i !== index));
      };
 
@@ -778,7 +774,7 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
        <div>
          <h1>Min App</h1>
          <Education school="MIT" degree="Bachelor of Science" />
-         <Skills skills={skills} onSkillClick={handleSkillClick} onDeleteSkill={handleDeleteSkill} />
+         <Skills skills={skills} onDeleteSkill={handleDeleteSkill} />
          <Projects projects={projects} />
          <Footer year={2024} />
        </div>
