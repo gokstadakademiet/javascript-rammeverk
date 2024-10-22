@@ -426,9 +426,9 @@
    function App() {
    +  const [skills, setSkills] = useState(['JavaScript', 'React', 'Node.js']);
    +
-      const handleSkillClick = (skill) => {
-      alert(`Du klikket på: ${skill}`);
-      };
+   -  const handleSkillClick = (skill) => {
+   -  alert(`Du klikket på: ${skill}`);
+   -  };
    
    +  const handleDeleteSkill = (index) => {
    +    setSkills(skills.filter((_, i) => i !== index));
@@ -442,7 +442,7 @@
          <h1>Min App</h1>
          <Education school="MIT" degree="Bachelor of Science" />
    -      <Skills skills={['JavaScript', 'React', 'Node.js']} onSkillClick={handleSkillClick} />
-   +      <Skills skills={skills} onSkillClick={handleSkillClick} onDeleteSkill={handleDeleteSkill} />
+   +      <Skills skills={skills} onDeleteSkill={handleDeleteSkill} />
          <Projects projects={projects} />
          <Footer year={2024} />
       </div>
@@ -462,10 +462,6 @@
    function App() {
      const [skills, setSkills] = useState(['JavaScript', 'React', 'Node.js']);
 
-     const handleSkillClick = (skill) => {
-       alert(`Du klikket på: ${skill}`);
-     };
-
      const handleDeleteSkill = (index) => {
        setSkills(skills.filter((_, i) => i !== index));
      };
@@ -479,7 +475,7 @@
        <div>
          <h1>Min App</h1>
          <Education school="MIT" degree="Bachelor of Science" />
-         <Skills skills={skills} onSkillClick={handleSkillClick} onDeleteSkill={handleDeleteSkill} />
+         <Skills skills={skills} onDeleteSkill={handleDeleteSkill} />
          <Projects projects={projects} />
          <Footer year={2024} />
        </div>
