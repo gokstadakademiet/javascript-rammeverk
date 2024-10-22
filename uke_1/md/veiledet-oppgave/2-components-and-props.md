@@ -14,10 +14,10 @@
 ### Oppgave 2: Komponenter og Props
 
 1. **Opprett en ny komponent `Education`**  
-   Lag en ny fil `components/Education.js` som tar inn props `school` og `degree`. Komponenten skal returnere en div med to paragrafer for henholdsvis `school` og `degree`:
+   Lag en ny fil `components/Education.jsx` som tar inn props `school` og `degree`. Komponenten skal returnere en div med to paragrafer for henholdsvis `school` og `degree`:
 
    ```jsx
-   // components/Education.js
+   // components/Education.jsx
    function Education({ school, degree }) {
      return (
        <div>
@@ -33,10 +33,10 @@
    > Husk å eksportere komponenten slik at den kan importeres i andre filer.
 
    **Inkluder `Education` i `App`**  
-   Oppdater `App.js` til å inkludere `Education` komponenten:
+   Oppdater `App.jsx` til å inkludere `Education` komponenten:
 
    ```jsx
-   // App.js
+   // App.jsx
    import React from 'react';
    import Education from './components/Education';
 
@@ -55,10 +55,10 @@
 ### Oppgave 3: Hendelser og Håndtering
 
 1. **Opprett en ny komponent `Skills`**  
-   Lag en ny fil `components/Skills.js` som tar inn en liste av ferdigheter som props. Komponenten skal vise en knapp som, når klikket, viser ferdighetene i en alert:
+   Lag en ny fil `components/Skills.jsx` som tar inn en liste av ferdigheter som props. Komponenten skal vise en knapp som, når klikket, viser ferdighetene i en alert:
 
    ```jsx
-   // components/Skills.js
+   // components/Skills.jsx
    function Skills({ skills }) {
      const visFerdigheter = () => {
        alert(`Ferdigheter: ${skills.join(', ')}`);
@@ -72,7 +72,7 @@
    ```
 
    **Inkluder `Skills` i `App`**  
-   Oppdater `App.js` til å inkludere `Skills` komponenten:
+   Oppdater `App.jsx` til å inkludere `Skills` komponenten:
 
    ```diff
    import React from 'react';
@@ -94,7 +94,7 @@
    <summary>Se full kode</summary>
 
    ```jsx
-   // App.js
+   // App.jsx
    import React from 'react';
    import Education from './components/Education';
    import Skills from './components/Skills';
@@ -116,10 +116,10 @@
 ### Oppgave 4: Komponent Sammensetning
 
 1. **Opprett en `Footer` komponent**  
-   Lag en ny fil `components/Footer.js` som tar inn prop `year`. Komponenten skal returnere en div som viser © {year} Ditt Navn:
+   Lag en ny fil `components/Footer.jsx` som tar inn prop `year`. Komponenten skal returnere en div som viser © {year} Ditt Navn:
 
    ```jsx
-   // components/Footer.js
+   // components/Footer.jsx
    function Footer({ year }) {
      return (
        <div>
@@ -131,7 +131,7 @@
    ```
 
    **Inkluder `Footer` i `App`**  
-   Oppdater `App.js` til å inkludere `Footer` komponenten:
+   Oppdater `App.jsx` til å inkludere `Footer` komponenten:
 
    ```diff
    import React from 'react';
@@ -155,7 +155,7 @@
    <summary>Se full kode</summary>
 
    ```jsx
-   // App.js
+   // App.jsx
    import React from 'react';
    import Education from './components/Education';
    import Skills from './components/Skills';
@@ -205,7 +205,7 @@
    <summary>Se full kode</summary>
 
    ```jsx
-   // components/Skills.js
+   // components/Skills.jsx
    function Skills({ skills, onSkillClick }) {
      return (
        <div>
@@ -225,7 +225,7 @@
    <br></br>
 
    **Inkluder oppdatert `Skills` i `App`**  
-   Oppdater `App.js` til å inkludere den oppdaterte `Skills` komponenten:
+   Oppdater `App.jsx` til å inkludere den oppdaterte `Skills` komponenten:
 
    ```diff
    function App() {
@@ -248,7 +248,7 @@
    <summary>Se full kode</summary>
 
    ```jsx
-   // App.js
+   // App.jsx
    import React from 'react';
    import Education from './components/Education';
    import Skills from './components/Skills';
@@ -277,10 +277,10 @@
 ### Ekstra utfordringsoppgaver
 
 1. **Opprett en `Projects` komponent**  
-   Lag en ny fil `components/Projects.js` som tar inn en liste av prosjekter som props. Komponenten skal vise prosjektene med tittel, beskrivelse og en lenke:
+   Lag en ny fil `components/Projects.jsx` som tar inn en liste av prosjekter som props. Komponenten skal vise prosjektene med tittel, beskrivelse og en lenke:
 
    ```jsx
-   // components/Projects.js
+   // components/Projects.jsx
    function Projects({ projects }) {
      return (
        <div>
@@ -300,7 +300,7 @@
    ```
 
    **Inkluder `Projects` i `App`**  
-   Oppdater `App.js` til å inkludere `Projects` komponenten:
+   Oppdater `App.jsx` til å inkludere `Projects` komponenten:
 
    ```diff
    import Education from './components/Education';
@@ -333,7 +333,7 @@
    <summary>Se full kode</summary>
 
    ```jsx
-   // App.js
+   // App.jsx
    import React from 'react';
    import Education from './components/Education';
    import Skills from './components/Skills';
@@ -393,7 +393,7 @@
    <summary>Se full kode</summary>
 
    ```jsx
-   // components/Skills.js
+   // components/Skills.jsx
    function Skills({ skills, onDeleteSkill }) {
      return (
        <div>
@@ -414,7 +414,7 @@
    <br></br>
 
    **Inkluder oppdatert `Skills` i `App`**  
-   Oppdater `App.js` til å inkludere den oppdaterte `Skills` komponenten:
+   Oppdater `App.jsx` til å inkludere den oppdaterte `Skills` komponenten:
 
    ```diff
    +import React, { useState } from 'react';
@@ -452,7 +452,7 @@
    <summary>Se full kode</summary>
 
    ```jsx
-   // App.js
+   // App.jsx
    import React, { useState } from 'react';
    import Education from './components/Education';
    import Skills from './components/Skills';

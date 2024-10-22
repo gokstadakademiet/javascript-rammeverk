@@ -73,10 +73,10 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
 - `main.jsx`: Dette er inngangspunktet for React-applikasjonen din. Her importeres hovedkomponenten (`App`) og renderes til DOM-en.
 
 1. **Fjern standardkode**  
-    Åpne `App.js` i en teksteditor og fjern all kode.
+    Åpne `App.jsx` i en teksteditor og fjern all kode.
 
 2. **Legg til en overskrift**  
-    Legg til følgende kode i `App.js` for å vise en overskrift:
+    Legg til følgende kode i `App.jsx` for å vise en overskrift:
     ```jsx
     function App() {
       return (
@@ -190,7 +190,7 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
     Opprett tre separate komponenter: `Header`, `PersonalInfo` og `SkillsButton`.
 
 2. **Header-komponenten**  
-    Opprett en ny fil `Header.js`:
+    Opprett en ny fil `Header.jsx`:
     ```jsx
     function Header() {
       return (
@@ -204,7 +204,7 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
     ```
 
 3. **PersonalInfo-komponenten**  
-    Opprett en ny fil `PersonalInfo.js`:
+    Opprett en ny fil `PersonalInfo.jsx`:
     ```jsx
     function PersonalInfo() {
       return (
@@ -220,7 +220,7 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
     ```
 
 4. **SkillsButton-komponenten**  
-    Opprett en ny fil `SkillsButton.js`:
+    Opprett en ny fil `SkillsButton.jsx`:
     ```jsx
     function SkillsButton() {
       const visDetaljer = () => {
@@ -234,8 +234,8 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
     export default SkillsButton;
     ```
 
-5. **Bruk komponentene i `App.js`**  
-    Oppdater `App.js` til å bruke de nye komponentene:
+5. **Bruk komponentene i `App.jsx`**  
+    Oppdater `App.jsx` til å bruke de nye komponentene:
     ```jsx
     import Header from './Header';
     import PersonalInfo from './PersonalInfo';
@@ -271,8 +271,8 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
     export default PersonalInfo;
     ```
 
-2. **Send props fra `App.js`**  
-    Oppdater `App.js` til å sende props til `PersonalInfo`:
+2. **Send props fra `App.jsx`**  
+    Oppdater `App.jsx` til å sende props til `PersonalInfo`:
     ```jsx
     import Header from './Header';
     import PersonalInfo from './PersonalInfo';

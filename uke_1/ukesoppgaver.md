@@ -75,10 +75,10 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
 - `main.jsx`: Dette er inngangspunktet for React-applikasjonen din. Her importeres hovedkomponenten (`App`) og renderes til DOM-en.
 
 1. **Fjern standardkode**  
-    Åpne `App.js` i en teksteditor og fjern all kode.
+    Åpne `App.jsx` i en teksteditor og fjern all kode.
 
 2. **Legg til en overskrift**  
-    Legg til følgende kode i `App.js` for å vise en overskrift:
+    Legg til følgende kode i `App.jsx` for å vise en overskrift:
     ```jsx
     function App() {
       return (
@@ -192,7 +192,7 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
     Opprett tre separate komponenter: `Header`, `PersonalInfo` og `SkillsButton`.
 
 2. **Header-komponenten**  
-    Opprett en ny fil `Header.js`:
+    Opprett en ny fil `Header.jsx`:
     ```jsx
     function Header() {
       return (
@@ -206,7 +206,7 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
     ```
 
 3. **PersonalInfo-komponenten**  
-    Opprett en ny fil `PersonalInfo.js`:
+    Opprett en ny fil `PersonalInfo.jsx`:
     ```jsx
     function PersonalInfo() {
       return (
@@ -222,7 +222,7 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
     ```
 
 4. **SkillsButton-komponenten**  
-    Opprett en ny fil `SkillsButton.js`:
+    Opprett en ny fil `SkillsButton.jsx`:
     ```jsx
     function SkillsButton() {
       const visDetaljer = () => {
@@ -236,8 +236,8 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
     export default SkillsButton;
     ```
 
-5. **Bruk komponentene i `App.js`**  
-    Oppdater `App.js` til å bruke de nye komponentene:
+5. **Bruk komponentene i `App.jsx`**  
+    Oppdater `App.jsx` til å bruke de nye komponentene:
     ```jsx
     import Header from './Header';
     import PersonalInfo from './PersonalInfo';
@@ -273,8 +273,8 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
     export default PersonalInfo;
     ```
 
-2. **Send props fra `App.js`**  
-    Oppdater `App.js` til å sende props til `PersonalInfo`:
+2. **Send props fra `App.jsx`**  
+    Oppdater `App.jsx` til å sende props til `PersonalInfo`:
     ```jsx
     import Header from './Header';
     import PersonalInfo from './PersonalInfo';
@@ -316,10 +316,10 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
 ### Oppgave 2: Komponenter og Props
 
 1. **Opprett en ny komponent `Education`**  
-   Lag en ny fil `components/Education.js` som tar inn props `school` og `degree`. Komponenten skal returnere en div med to paragrafer for henholdsvis `school` og `degree`:
+   Lag en ny fil `components/Education.jsx` som tar inn props `school` og `degree`. Komponenten skal returnere en div med to paragrafer for henholdsvis `school` og `degree`:
 
    ```jsx
-   // components/Education.js
+   // components/Education.jsx
    function Education({ school, degree }) {
      return (
        <div>
@@ -335,10 +335,10 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
 > Husk å eksportere komponenten slik at den kan importeres i andre filer.
 
    **Inkluder `Education` i `App`**  
-   Oppdater `App.js` til å inkludere `Education` komponenten:
+   Oppdater `App.jsx` til å inkludere `Education` komponenten:
 
    ```jsx
-   // App.js
+   // App.jsx
    import React from 'react';
    import Education from './components/Education';
 
@@ -357,10 +357,10 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
 ### Oppgave 3: Hendelser og Håndtering
 
 1. **Opprett en ny komponent `Skills`**  
-   Lag en ny fil `components/Skills.js` som tar inn en liste av ferdigheter som props. Komponenten skal vise en knapp som, når klikket, viser ferdighetene i en alert:
+   Lag en ny fil `components/Skills.jsx` som tar inn en liste av ferdigheter som props. Komponenten skal vise en knapp som, når klikket, viser ferdighetene i en alert:
 
    ```jsx
-   // components/Skills.js
+   // components/Skills.jsx
    function Skills({ skills }) {
      const visFerdigheter = () => {
        alert(`Ferdigheter: ${skills.join(', ')}`);
@@ -374,7 +374,7 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
    ```
 
    **Inkluder `Skills` i `App`**  
-   Oppdater `App.js` til å inkludere `Skills` komponenten:
+   Oppdater `App.jsx` til å inkludere `Skills` komponenten:
 
    ```diff
    import React from 'react';
@@ -396,7 +396,7 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
    <summary>Se full kode</summary>
 
    ```jsx
-   // App.js
+   // App.jsx
    import React from 'react';
    import Education from './components/Education';
    import Skills from './components/Skills';
@@ -418,10 +418,10 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
 ### Oppgave 4: Komponent Sammensetning
 
 1. **Opprett en `Footer` komponent**  
-   Lag en ny fil `components/Footer.js` som tar inn prop `year`. Komponenten skal returnere en div som viser © {year} Ditt Navn:
+   Lag en ny fil `components/Footer.jsx` som tar inn prop `year`. Komponenten skal returnere en div som viser © {year} Ditt Navn:
 
    ```jsx
-   // components/Footer.js
+   // components/Footer.jsx
    function Footer({ year }) {
      return (
        <div>
@@ -433,7 +433,7 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
    ```
 
    **Inkluder `Footer` i `App`**  
-   Oppdater `App.js` til å inkludere `Footer` komponenten:
+   Oppdater `App.jsx` til å inkludere `Footer` komponenten:
 
    ```diff
    import React from 'react';
@@ -457,7 +457,7 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
    <summary>Se full kode</summary>
 
    ```jsx
-   // App.js
+   // App.jsx
    import React from 'react';
    import Education from './components/Education';
    import Skills from './components/Skills';
@@ -507,7 +507,7 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
    <summary>Se full kode</summary>
 
    ```jsx
-   // components/Skills.js
+   // components/Skills.jsx
    function Skills({ skills, onSkillClick }) {
      return (
        <div>
@@ -527,7 +527,7 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
    <br></br>
 
    **Inkluder oppdatert `Skills` i `App`**  
-   Oppdater `App.js` til å inkludere den oppdaterte `Skills` komponenten:
+   Oppdater `App.jsx` til å inkludere den oppdaterte `Skills` komponenten:
 
    ```diff
    function App() {
@@ -550,7 +550,7 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
    <summary>Se full kode</summary>
 
    ```jsx
-   // App.js
+   // App.jsx
    import React from 'react';
    import Education from './components/Education';
    import Skills from './components/Skills';
@@ -579,10 +579,10 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
 ### Ekstra utfordringsoppgaver
 
 1. **Opprett en `Projects` komponent**  
-   Lag en ny fil `components/Projects.js` som tar inn en liste av prosjekter som props. Komponenten skal vise prosjektene med tittel, beskrivelse og en lenke:
+   Lag en ny fil `components/Projects.jsx` som tar inn en liste av prosjekter som props. Komponenten skal vise prosjektene med tittel, beskrivelse og en lenke:
 
    ```jsx
-   // components/Projects.js
+   // components/Projects.jsx
    function Projects({ projects }) {
      return (
        <div>
@@ -602,7 +602,7 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
    ```
 
    **Inkluder `Projects` i `App`**  
-   Oppdater `App.js` til å inkludere `Projects` komponenten:
+   Oppdater `App.jsx` til å inkludere `Projects` komponenten:
 
    ```diff
    import Education from './components/Education';
@@ -635,7 +635,7 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
    <summary>Se full kode</summary>
 
    ```jsx
-   // App.js
+   // App.jsx
    import React from 'react';
    import Education from './components/Education';
    import Skills from './components/Skills';
@@ -695,7 +695,7 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
    <summary>Se full kode</summary>
 
    ```jsx
-   // components/Skills.js
+   // components/Skills.jsx
    function Skills({ skills, onDeleteSkill }) {
      return (
        <div>
@@ -716,7 +716,7 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
    <br></br>
 
    **Inkluder oppdatert `Skills` i `App`**  
-   Oppdater `App.js` til å inkludere den oppdaterte `Skills` komponenten:
+   Oppdater `App.jsx` til å inkludere den oppdaterte `Skills` komponenten:
 
    ```diff
    +import React, { useState } from 'react';
@@ -754,7 +754,7 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
    <summary>Se full kode</summary>
 
    ```jsx
-   // App.js
+   // App.jsx
    import React, { useState } from 'react';
    import Education from './components/Education';
    import Skills from './components/Skills';
@@ -952,7 +952,7 @@ export default App;
 
 ### Oppgave 3: Custom Hook for CV Data
 
-I denne oppgaven skal du implementere en egendefinert hook kalt `useCVData` for å sentralisere og administrere CV-data ved hjelp av `useState`-hooken. En egendefinert hook er en funksjon som bruker React hooks og lar deg gjenbruke logikk på tvers av komponenter. `useCVData` skal inkludere funksjoner for å legge til ferdigheter og oppdatere grunnleggende informasjon, noe som gjør koden mer modulær og gjenbrukbar. Plasser denne hooken i en mappe kalt `/hooks` og navngi filen `useCVData.js`.
+I denne oppgaven skal du implementere en egendefinert hook kalt `useCVData` for å sentralisere og administrere CV-data ved hjelp av `useState`-hooken. En egendefinert hook er en funksjon som bruker React hooks og lar deg gjenbruke logikk på tvers av komponenter. `useCVData` skal inkludere funksjoner for å legge til ferdigheter og oppdatere grunnleggende informasjon, noe som gjør koden mer modulær og gjenbrukbar. Plasser denne hooken i en mappe kalt `/hooks` og navngi filen `useCVData.jsx`.
 
 > [!NOTE]  
 > Custom hooks er en kraftig måte å gjenbruke logikk på tvers av komponenter. Sørg for å forstå hvordan de fungerer og hvordan de kan forbedre koden din.
