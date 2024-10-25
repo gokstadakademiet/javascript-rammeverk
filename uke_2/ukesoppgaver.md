@@ -1,5 +1,4 @@
-# Oppgavesett: Interaktiv Online CV Webapplikasjon
-
+# Oppgavesett: Interaktiv Online CV Webapplikasjon\n
 ## Introduksjon til `useEffect`
 
 ### **Oppgave 1: Enkel sideinnlasting**
@@ -38,12 +37,13 @@ const CVApp = () => {
 3. **Konsollmelding**: Inne i funksjonen som vi gir til `useEffect`, legger vi til en `console.log`-melding som sier 'CV-appen er lastet!'. Dette vil kjøre én gang når komponenten først lastes.
 
 > [!NOTE]  
-> `useEffect` uten avhengighetsarray kjører kun én gang ved første render, noe som er nyttig for initialiseringslogikk.
+> `useEffect` med tom avhengighetsarray kjører kun én gang ved første render, noe som er nyttig for initialiseringslogikk.
 
 ### **Oppgave 2: Sporing av visninger**
 
-Ved hjelp av `useEffect`, opprett en funksjon som holder styr på og viser antall ganger brukeren har besøkt CV-webapplikasjonen. Hint: Kombiner `useEffect` med `localStorage`.
+Ved hjelp av `useEffect`, opprett en funksjon som holder styr på og viser antall ganger brukeren har besøkt CV-webapplikasjonen. 
 
+Hint: Kombiner `useEffect` med `localStorage`.
 
 <details><summary>Se full kode</summary>
 
@@ -60,8 +60,6 @@ useEffect(() => {
 }, []);
 ```
 
-</details>
-
 **Forklaring:**
 
 1. **`localStorage`**: Dette er en nettleser-API som lar oss lagre data i brukerens nettleser. Dataen forblir lagret selv etter at brukeren lukker nettleseren.
@@ -72,7 +70,65 @@ useEffect(() => {
 
 4. **Logge til konsollen**: Til slutt logger vi antall visninger til konsollen.
 
-### **Oppgave 3: Overvåkning av endringer**
+</details>
+
+### **Oppgave 3: `StrictMode` og `useEffect`**
+
+React's `StrictMode` kan føre til at `useEffect` kjører to ganger i utviklingsmodus, selv om den kun kjører én gang i produksjonsmodus. Dette er for å hjelpe utviklere med å identifisere potensielle problemer.
+
+Lag en komponent som demonstrerer dette ved å logge en melding til konsollen hver gang `useEffect` kjører. Fjern deretter `StrictMode` fra `App.jsx` og observer hvordan denne endringen manifesterer seg i `Inspect -> Console`. 
+
+<details><summary>Se full kode</summary>
+
+```javascript
+import React, { useEffect } from 'react';
+
+const StrictModeExample = () => {
+  useEffect(() => {
+    console.log('useEffect kjører');
+  }, []);
+
+  return (
+    <div>
+      <h1>StrictMode Eksempel</h1>
+    </div>
+  );
+}
+
+export default StrictModeExample;
+
+---
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import StrictModeExample from './StrictModeExample';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <StrictModeExample />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+```
+
+
+
+**Forklaring:**
+
+1. **`StrictMode`**: Dette er et verktøy for å fremheve potensielle problemer i en applikasjon. Dette skjer i form av 
+
+2. **`useEffect` i `StrictMode`**: I utviklingsmodus kjører `StrictMode` `useEffect` to ganger for å hjelpe med å identifisere sideeffekter som ikke er rene. Dette skjer ikke i produksjonsmodus.
+
+3. **Demonstrasjon**: Når du kjører komponenten `StrictModeExample` i utviklingsmodus, vil du se meldingen "useEffect kjører" to ganger i konsollen. I produksjonsmodus vil meldingen kun vises én gang.
+
+</details>
+
+</br>
+
+> [!NOTE]  
+> `StrictMode` påvirker kun utviklingsmodus og har ingen effekt i produksjonsbygg. Dette hjelper utviklere med å skrive mer robust og feilfri kode. Bruk `StrictMode` for å identifisere og fikse potensielle problemer tidlig i utviklingsprosessen.
+
+### **Oppgave 4: Overvåkning av endringer**
 
 La oss si at det er en seksjon hvor brukerne kan legge til ferdighetene de har. Overvåk denne seksjonen for endringer, og hver gang en ny ferdighet blir lagt til, logg det til konsollen.
 
@@ -104,7 +160,6 @@ const SkillsSection = () => {
   );
 }
 ```
-</details>
 
 **Forklaring:**
 
@@ -116,10 +171,14 @@ const SkillsSection = () => {
 
 4. **Legge til ferdighet**: Vi definerer en funksjon `addSkill` som tar en ferdighet som argument og legger den til `skills`-arrayen ved hjelp av `setSkills`.
 
+</details>
+
+</br>
+
 > [!TIP]  
 > Bruk en unik nøkkel for hver ferdighet i listen for å unngå potensielle problemer med Reacts gjenbruk av elementer.
 
-### **Oppgave 4: Dynamisk tittel**
+### **Oppgave 5: Dynamisk tittel**
 
 Bruk `useEffect` til å oppdatere dokumenttittelen til å inkludere antall visninger fra forrige oppgave.
 
@@ -162,7 +221,7 @@ useEffect(() => {
 > [!NOTE]  
 > Oppdatering av dokumenttittelen kan forbedre brukeropplevelsen ved å gi kontekstuell informasjon direkte i nettleserfanen.
 
-### **Oppgave 5: API-kall ved lasting**
+### **Oppgave 6: API-kall ved lasting**
 
 Bruk `useEffect` til å hente data fra et API når komponenten lastes. Vis dataene i komponenten.
 
@@ -188,7 +247,6 @@ const CVApp = () => {
   );
 }
 ```
-</details>
 
 **Forklaring:**
 
@@ -200,10 +258,14 @@ const CVApp = () => {
 
 4. **Vise data**: I returblokken viser vi dataen hvis den er tilgjengelig. Hvis ikke, viser vi en lastemelding.
 
-> [!WARNING]  
+</details>
+
+</br>
+
+> [!TIP]  
 > Husk å håndtere feil som kan oppstå under API-kall, slik at brukeren får en god opplevelse selv om noe går galt.
 
-### **Oppgave 6: Avhengigheter i `useEffect`**
+### **Oppgave 7: Avhengigheter i `useEffect`**
 
 Lag en komponent som viser en teller. Bruk `useEffect` til å logge verdien av telleren hver gang den endres.
 
@@ -227,7 +289,6 @@ const Counter = () => {
   );
 }
 ```
-</details>
 
 **Forklaring:**
 
@@ -239,7 +300,9 @@ const Counter = () => {
 
 4. **Øke teller**: Vi definerer en knapp som, når den klikkes, øker verdien av telleren ved hjelp av `setCount`.
 
-### **Oppgave 7: Avhengigheter med komplekse objekter**
+</details>
+
+### **Oppgave 8: Avhengigheter med komplekse objekter**
 
 Lag en komponent som viser en liste over oppgaver. Bruk `useEffect` til å logge listen hver gang den endres.
 
@@ -271,7 +334,6 @@ const TaskList = () => {
   );
 }
 ```
-</details>
 
 **Forklaring:**
 
@@ -283,10 +345,14 @@ const TaskList = () => {
 
 4. **Legge til oppgave**: Vi definerer en funksjon `addTask` som tar en oppgave som argument og legger den til `tasks`-arrayen ved hjelp av `setTasks`.
 
+</details>
+
+</br>
+
 > [!CAUTION]  
 > Når du arbeider med komplekse objekter som arrays, sørg for å lage nye kopier av objektene for å unngå uventede sideeffekter.
 
-### **Oppgave 8: Avhengigheter med flere effekter**
+### **Oppgave 9: Avhengigheter med flere effekter**
 
 Lag en komponent som viser en teller og en liste over oppgaver. Bruk `useEffect` til å logge telleren og listen hver gang de endres.
 
@@ -325,7 +391,6 @@ const CounterAndTaskList = () => {
   );
 }
 ```
-</details>
 
 **Forklaring:**
 
@@ -337,10 +402,324 @@ const CounterAndTaskList = () => {
 
 4. **Øke teller og legge til oppgave**: Vi definerer en knapp for å øke telleren og en knapp for å legge til en oppgave, ved hjelp av `setCount` og `setTasks`.
 
+</details>
+
+</br>
+
 > [!NOTE]  
 > Det er mulig å ha flere `useEffect`-hooks i en komponent for å håndtere forskjellige sideeffekter separat.
 
-### **Oppgave 9: Bruk av `useEffect` med React Router**
+### **Oppgave 10: Tidsbasert oppdatering**
+
+Lag en komponent som viser gjeldende tid og oppdaterer den hvert sekund ved hjelp av `useEffect`.
+
+<details><summary>Se full kode</summary>
+
+```javascript
+import { useEffect, useState } from 'react';
+
+const Clock = () => {
+  const [time, setTime] = useState(new Date().toLocaleTimeString());
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime(new Date().toLocaleTimeString());
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div>
+      <p>Gjeldende tid: {time}</p>
+    </div>
+  );
+}
+```
+
+**Forklaring:**
+
+1. **`useState`**: Vi bruker `useState`-hooken til å opprette en tilstand for tiden. `time` holder den nåværende tiden, og `setTime` er funksjonen for å oppdatere denne tilstanden.
+
+2. **Oppdatere tid**: Vi bruker `setInterval` til å oppdatere tiden hvert sekund. `clearInterval` brukes for å rydde opp når komponenten demonteres.
+
+3. **Vise tid**: I returblokken viser vi den nåværende tiden.
+
+</details>
+
+### **Oppgave 11: Formhåndtering**
+
+Lag en komponent som håndterer et enkelt skjema med `useState` og `useEffect`. Logg skjemaets data til konsollen hver gang det endres.
+
+<details><summary>Se full kode</summary>
+
+```javascript
+import { useEffect, useState } from 'react';
+
+const SimpleForm = () => {
+  const [formData, setFormData] = useState({ name: '', email: '' });
+
+  useEffect(() => {
+    console.log('Skjema data:', formData);
+  }, [formData]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  return (
+    <form>
+      <div>
+        <label>Navn:</label>
+        <input type="text" name="name" value={formData.name} onChange={handleChange} />
+      </div>
+      <div>
+        <label>Email:</label>
+        <input type="email" name="email" value={formData.email} onChange={handleChange} />
+      </div>
+    </form>
+  );
+}
+```
+
+**Forklaring:**
+
+1. **`useState`**: Vi bruker `useState`-hooken til å opprette en tilstand for skjemaets data. `formData` holder dataen, og `setFormData` er funksjonen for å oppdatere denne tilstanden.
+
+2. **Overvåke endringer**: Vi bruker `useEffect` med `formData` som avhengighet. Dette betyr at effekten vil kjøre hver gang `formData` endres.
+
+3. **Håndtere endringer**: Vi definerer en `handleChange`-funksjon som oppdaterer `formData` når brukeren skriver i skjemaet.
+
+4. **Vise skjema**: I returblokken viser vi skjemaet med inputfelter for navn og email.
+
+</details>
+
+### **Oppgave 12: Avbryte API-kall**
+
+Lag en komponent som henter data fra et API, men avbryter API-kallet hvis komponenten demonteres før kallet fullføres.
+
+<details><summary>Se full kode</summary>
+
+```javascript
+import { useEffect, useState } from 'react';
+
+const FetchWithAbort = () => {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const signal = controller.signal;
+
+    fetch('https://api.example.com/data', { signal })
+      .then(response => response.json())
+      .then(data => setData(data))
+      .catch(error => {
+        if (error.name !== 'AbortError') {
+          console.error('Error fetching data:', error);
+        }
+      });
+
+    return () => controller.abort();
+  }, []);
+
+  return (
+    <div>
+      {data ? <pre>{JSON.stringify(data, null, 2)}</pre> : 'Laster data...'}
+    </div>
+  );
+}
+```
+
+**Forklaring:**
+
+1. **`useState`**: Vi bruker `useState`-hooken til å opprette en tilstand for dataen vi henter fra API-et. `data` holder dataen, og `setData` er funksjonen for å oppdatere denne tilstanden.
+
+2. **Avbryte API-kall**: Vi bruker `AbortController` til å avbryte API-kallet hvis komponenten demonteres før kallet fullføres.
+
+3. **Håndtere feil**: Vi legger til en `catch`-blokk for å logge eventuelle feil som oppstår under henting av data, bortsett fra `AbortError`.
+
+4. **Vise data**: I returblokken viser vi dataen hvis den er tilgjengelig. Hvis ikke, viser vi en lastemelding.
+
+</details>
+
+</br>
+
+> [!TIP]  
+> Bruk `AbortController` for å avbryte API-kall og unngå potensielle minnelekkasjer når komponenter demonteres.
+
+### **Oppgave 13: Debouncing med `useEffect`**
+
+Lag en komponent som viser en søkeboks. Bruk `useEffect` til å implementere debouncing, slik at API-kall kun utføres når brukeren slutter å skrive i et visst tidsrom.
+
+<details><summary>Se full kode</summary>
+
+```javascript
+import { useEffect, useState } from 'react';
+
+const SearchWithDebounce = () => {
+  const [query, setQuery] = useState('');
+  const [results, setResults] = useState([]);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      if (query) {
+        fetch(`https://api.example.com/search?q=${query}`)
+          .then(response => response.json())
+          .then(data => setResults(data))
+          .catch(error => console.error('Error fetching data:', error));
+      }
+    }, 500);
+
+    return () => clearTimeout(handler);
+  }, [query]);
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        placeholder="Søk..."
+      />
+      <ul>
+        {results.map((result, index) => (
+          <li key={index}>{result.name}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+```
+
+**Forklaring:**
+
+1. **`useState`**: Vi bruker `useState`-hooken til å opprette tilstander for søkespørringen (`query`) og søkeresultatene (`results`).
+
+2. **Debouncing**: Vi bruker `setTimeout` til å forsinke API-kallet til brukeren har sluttet å skrive i 500 millisekunder. `clearTimeout` brukes for å rydde opp når komponenten demonteres eller `query` endres.
+
+3. **Hente data**: Vi bruker `fetch` til å hente søkeresultater fra API-et basert på søkespørringen.
+
+4. **Vise resultater**: I returblokken viser vi en inputboks for søkespørringen og en liste over søkeresultatene.
+
+</details>
+
+</br>
+
+> [!TIP]  
+> Debouncing kan forbedre ytelsen ved å redusere antall API-kall som utføres mens brukeren skriver.
+
+### **Oppgave 14: Dynamisk bakgrunnsfarge**
+
+Lag en komponent som endrer bakgrunnsfargen på siden basert på en tilstand. Bruk `useEffect` til å oppdatere bakgrunnsfargen.
+
+<details><summary>Se full kode</summary>
+
+```javascript
+import { useEffect, useState } from 'react';
+
+const BackgroundColorChanger = () => {
+  const [color, setColor] = useState('#ffffff');
+
+  useEffect(() => {
+    document.body.style.backgroundColor = color;
+    return () => {
+      document.body.style.backgroundColor = '';
+    };
+  }, [color]);
+
+  return (
+    <div>
+      <input
+        type="color"
+        value={color}
+        onChange={(e) => setColor(e.target.value)}
+      />
+    </div>
+  );
+}
+```
+
+**Forklaring:**
+
+1. **`useState`**: Vi bruker `useState`-hooken til å opprette en tilstand for bakgrunnsfargen (`color`).
+
+2. **Oppdatere bakgrunnsfarge**: Vi bruker `useEffect` til å oppdatere `document.body.style.backgroundColor` basert på `color`-tilstanden. Vi rydder opp ved å tilbakestille bakgrunnsfargen når komponenten demonteres.
+
+3. **Vise fargevelger**: I returblokken viser vi en inputboks for å velge farge.
+
+</details>
+
+</br>
+
+> [!TIP]  
+> Bruk `useEffect` til å utføre sideeffekter som påvirker DOM direkte, som å endre bakgrunnsfargen på siden.
+
+### **Oppgave 15: Synkronisere tilstand med URL-parametere**
+
+Lag en komponent som synkroniserer en tilstand med URL-parametere ved hjelp av `useEffect`.
+
+<details><summary>Se full kode</summary>
+
+```javascript
+import { useEffect, useState } from 'react';
+import { useLocation, useHistory } from 'react-router-dom';
+
+const SyncWithURL = () => {
+  const [query, setQuery] = useState('');
+  const location = useLocation();
+  const history = useHistory();
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const q = params.get('q');
+    if (q) {
+      setQuery(q);
+    }
+  }, [location]);
+
+  useEffect(() => {
+    const params = new URLSearchParams();
+    if (query) {
+      params.set('q', query);
+    } else {
+      params.delete('q');
+    }
+    history.push({ search: params.toString() });
+  }, [query, history]);
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        placeholder="Søk..."
+      />
+    </div>
+  );
+}
+```
+
+**Forklaring:**
+
+1. **`useState`**: Vi bruker `useState`-hooken til å opprette en tilstand for søkespørringen (`query`).
+
+2. **Synkronisere med URL**: Vi bruker `useEffect` til å oppdatere `query`-tilstanden basert på URL-parametere når komponenten monteres eller URL-en endres.
+
+3. **Oppdatere URL**: Vi bruker en annen `useEffect` til å oppdatere URL-parametrene basert på `query`-tilstanden.
+
+4. **Vise input**: I returblokken viser vi en inputboks for søkespørringen.
+
+</details>
+
+</br>
+
+> [!TIP]  
+> Synkronisering av tilstand med URL-parametere kan forbedre brukeropplevelsen ved å gjøre det mulig å dele og bokmerke spesifikke tilstander i applikasjonen.
+
+
+<!-- ### **Oppgave 10: Bruk av `useEffect` med React Router**
 
 Lag en komponent som bruker React Router for å navigere mellom sider. Bruk `useEffect` til å utføre sideeffekter basert på ruten.
 
@@ -364,7 +743,6 @@ const RouterComponent = () => {
   );
 }
 ```
-</details>
 
 **Forklaring:**
 
@@ -376,6 +754,9 @@ const RouterComponent = () => {
 
 4. **Vise gjeldende rute**: I returblokken viser vi den nåværende ruten ved hjelp av `location.pathname`.
 
+</details> -->
+\n\n
+## Feilsøkingsoppgaver
 
 ### **Feilsøkingsoppgave 1:**
 
@@ -456,6 +837,7 @@ Feilen ligger i hvordan `tasks`-arrayen oppdateres.
 
 <details><summary>Løsningsforslag</summary>
 Bruk `setTasks` med en ny kopi av `tasks`-arrayen for å unngå mutasjoner:
+
 ```javascript
 const addTask = (task) => {
   setTasks([...tasks, task]);
@@ -496,10 +878,139 @@ Feilen ligger i initialiseringen av `data`-tilstanden.
 
 <details><summary>Løsningsforslag</summary>
 Initialiser `data`-tilstanden med `null` for å unngå feil ved første render:
+
 ```javascript
 const [data, setData] = useState(null);
 ```
+
 </details>
 
 
+### **Feilsøkingsoppgave 4**
 
+Finn feilen i koden nedenfor.
+
+Denne komponenten skal vise en teller som øker med 1 hver gang brukeren klikker på knappen. Men det ser ut til at telleren ikke oppdateres riktig.
+
+```javascript
+import { useState } from 'react';
+
+const Incrementer = () => {
+    const [count, setCount] = useState(0);
+
+    const increment = () => {
+        setCount(count + 1);
+    };
+
+    return (
+        <div>
+            <p>Teller: {count}</p>
+            <button onClick={increment}>Øk teller</button>
+        </div>
+    );
+}
+```
+
+<details><summary>Tips</summary>
+Feilen ligger i hvordan `setCount` brukes i `increment`-funksjonen.
+</details>
+
+<details><summary>Løsningsforslag</summary>
+Bruk funksjonsformen til `setCount` for å sikre at oppdateringen skjer riktig:
+
+```javascript
+const increment = () => {
+    setCount(prevCount => prevCount + 1);
+};
+```
+</details>
+
+### **Feilsøkingsoppgave 5**
+
+Finn feilen i koden nedenfor.
+
+Denne komponenten skal vise en melding som endres når brukeren skriver i tekstfeltet. Men meldingen oppdateres ikke som forventet.
+
+```javascript
+import { useState } from 'react';
+
+const MessageUpdater = () => {
+    const [message, setMessage] = useState('Hello');
+
+    const handleChange = (event) => {
+        setMessage = event.target.value;
+    };
+
+    return (
+        <div>
+            <input type="text" onChange={handleChange} />
+            <p>Melding: {message}</p>
+        </div>
+    );
+}
+```
+
+<details><summary>Tips</summary>
+Feilen ligger i hvordan `setMessage` brukes i `handleChange`-funksjonen.
+</details>
+
+<details><summary>Løsningsforslag</summary>
+Bruk `setMessage` som en funksjon i stedet for å tildele en verdi direkte:
+
+```javascript
+const handleChange = (event) => {
+    setMessage(event.target.value);
+};
+```
+</details>
+
+### **Feilsøkingsoppgave 6**
+
+Finn feilen i koden nedenfor.
+
+Denne komponenten skal vise en liste over brukere som hentes fra et API. Men det ser ut til at listen ikke vises som forventet.
+
+```javascript
+import { useEffect, useState } from 'react';
+
+const UserList = () => {
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        fetch('https://fake-json-api.mock.beeceptor.com/users')
+            .then(response => response.json())
+            .then(data => setUsers(data.users))
+            .catch(error => console.error('Error fetching users:', error));
+    }, []);
+
+    return (
+        <div>
+            <ul>
+                {users.map(user => (
+                    <li key={user.id}>{user.name}</li>
+                ))}
+            </ul>
+        </div>
+    );
+}
+```
+
+<details><summary>Tips</summary>
+Feilen kan ligge i hvordan dataen fra API-et håndteres.
+</details>
+
+<details><summary>Løsningsforslag</summary>
+Sjekk strukturen på dataen som returneres fra API-et og sørg for at `data.users` eksisterer:
+
+```javascript
+useEffect(() => {
+    fetch('https://fake-json-api.mock.beeceptor.com/users')
+        .then(response => response.json())
+        .then(data => setUsers(data))
+        .catch(error => console.error('Error fetching users:', error));
+}, []);
+```
+
+For å sjekke strukturen på dataen som returneres fra API-et, kan du åpne nettleseren og skrive inn URL-en `https://fake-json-api.mock.beeceptor.com/users`. Dette vil vise deg JSON-responsen fra API-et, og du kan se hvordan dataen er strukturert. Sørg for at endepunktet eksisterer og inneholder en liste over brukere.
+</details>
+\n\n
