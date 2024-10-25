@@ -23,8 +23,6 @@ const CVApp = () => {
 }
 ```
 
-</details>
-
 **Forklaring:**
 
 1. **Importere `useEffect`**: Først importerer vi `useEffect` fra React. Dette er en hook som lar oss utføre sideeffekter i funksjonelle komponenter.
@@ -34,6 +32,8 @@ const CVApp = () => {
    - En avhengighetsarray som bestemmer når effekten skal kjøres. En tom array betyr at effekten bare skal kjøre én gang, når komponenten monteres.
 
 3. **Konsollmelding**: Inne i funksjonen som vi gir til `useEffect`, legger vi til en `console.log`-melding som sier 'CV-appen er lastet!'. Dette vil kjøre én gang når komponenten først lastes.
+
+</details>
 
 > [!NOTE]  
 > `useEffect` med tom avhengighetsarray kjører kun én gang ved første render, noe som er nyttig for initialiseringslogikk.
