@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/moon.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>useEffect</section>
+				<section data-markdown>
+					<textarea data-template>
+						#### Introduksjon til `useEffect`
+						- Utfører sideeffekter i funksjonskomponenter
+						- Erstatter livssyklusmetoder i klassekomponenter
+
+						---
+
+						#### Struktur av `useEffect`
+						- Tar en funksjon og en valgfri avhengighetsliste
+						- Kjøres etter hver render eller når avhengigheter endres
+
+						---
+
+						#### Kjøres etter hver render
+						<pre><code>
+						useEffect(() => {
+							console.log('Kjøres etter hver render!');
+						});
+						</code></pre>
+
+						---
+
+						#### Kjøres kun én gang
+						<pre><code>
+						useEffect(() => {
+							console.log('Kjøres kun én gang!');
+						}, []);
+						</code></pre>
+
+						---
+
+						#### Kjøres når verdier endrer seg
+						<pre><code>
+						const [count, setCount] = useState(0);
+
+						useEffect(() => {
+							console.log('count endret seg!');
+						}, [count]);
+						</code></pre>
+
+						---
+
+						#### Clean-up
+						<pre><code data-line-numbers="3-5">
+						useEffect(() => {
+							return () => {
+								console.log('Rydd opp her');
+							};
+						}, [count]);
+						</code></pre>
+
+						---
+
+						#### Eksempel
+						<pre><code data-line-numbers="3">
+						useEffect(() => {
+							fetchDataFromAPI().then(setData);
+						}, []);
+						</code></pre>
+
+						---
+
+						#### Livssyklus i React
+						- Montering, oppdatering, avmontering
+						- Hooks erstatter livssyklusmetoder
+
+						---
+
+						#### React Livssyklus Diagram
+
+
+						<section>
+							<section>
+								<p style="font-size: 10px; padding-top: 50px">Dette interaktive diagrammet viser React-fasene der visse livssyklusmetoder (f.eks. componentDidMount) utføres:</p>
+								<img src="img/react-most-common-lifecycle-methods.png.avif" alt="React Hooks Diagram" style="width: 40%; height: auto;">
+							</section>
+							<section>
+								<p style="font-size: 10px;">I kontrast viser det neste diagrammet hvordan ting fungerer i konteksten av funksjonelle komponenter:</p>
+								<img src="img/react-hooks-lifecycle.png.avif" alt="React Livssyklus Diagram" style="width: 40%; height: auto;">
+							</section>
+						</section>
+						
+
+						---
+
+
+						#### Hva er sideeffekter?
+						- Operasjoner som ikke påvirker render direkte
+						- Nettverkskall, timers, event-lyttere
+
+						---
+
+						#### Avhengighetsliste
+						- Array av verdier som overvåkes
+						- Effekt kjører på nytt ved endring
+
+						---
+
+						#### Sammenligning med Klassekomponenter
+						##### `componentDidMount`
+						<pre><code>useEffect(() => {
+							// Sideeffekt her
+						}, []);
+						</code></pre>
+
+						##### `componentDidUpdate`
+						<pre><code>useEffect(() => {
+							// Sideeffekt her
+						});
+						</code></pre>
+
+						##### `componentWillUnmount`
+						<pre><code>useEffect(() => {
+							return () => {
+								// Rydd opp her
+							};
+						}, []);
+						</code></pre>
+
+						---
+
+						#### Rensing (Clean-up) i `useEffect`
+						##### Eksempel 1
+						<pre><code data-line-numbers="5">useEffect(() => {
+							const timer = setTimeout(() => {
+								console.log('Timer kjørte!');
+							}, 1000);
+							return () => clearTimeout(timer);
+						}, []);
+						</code></pre>
+
+						##### Eksempel 2
+						<pre><code data-line-numbers="6">useEffect(() => {
+							const handleResize = () => {
+								// Handle resize
+							};
+							window.addEventListener('resize', handleResize);
+							return () => window.removeEventListener('resize', handleResize);
+						}, []);
+						</code></pre>
+
+						---
+
+						For mer informasjon, se [React dokumentasjonen om useEffect](https://react.dev/reference/react/useEffect#useeffect).
+					</textarea>
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>

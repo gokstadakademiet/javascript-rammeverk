@@ -12,3 +12,4 @@ test-uke-1
 **/*-self-notes.md
 **/*tekst.md
 **/reveal.js
+!uke_2/reveal.js
