@@ -437,6 +437,9 @@ const CounterAndTaskList = () => {
 > [!NOTE]  
 > Det er mulig å ha flere `useEffect`-hooks i en komponent for å håndtere forskjellige sideeffekter separat.
 
+
+
+
 ## Feilsøkingsoppgaver
 
 ### **Feilsøkingsoppgave 1:**
@@ -693,6 +696,9 @@ useEffect(() => {
 ```
 For å sjekke strukturen på dataen som returneres fra API-et, kan du åpne nettleseren og skrive inn URL-en [https://fake-json-api.mock.beeceptor.com/users](https://fake-json-api.mock.beeceptor.com/users). Dette vil vise deg JSON-responsen fra API-et, og du kan se hvordan dataen er strukturert. Sørg for at endepunktet eksisterer og inneholder en liste over brukere.
 </details>
+
+
+
 ## Utfordringsoppgaver
 
 ### **Oppgave 1: Tidsbasert oppdatering**
@@ -1041,3 +1047,6 @@ const RouterComponent = () => {
 4. **Vise gjeldende rute**: I returblokken viser vi den nåværende ruten ved hjelp av `location.pathname`.
 
 </details> -->
+
+
+
