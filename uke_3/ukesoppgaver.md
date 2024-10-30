@@ -1,5 +1,4 @@
 # Oppgavesett: Interaktiv Online CV Webapplikasjon: Debugging & Testing
-
 ## Innføring i `Jest` og `Debugging` teknikker
 
 ### **Oppgave 1: Basic Logging**
@@ -11,10 +10,10 @@ Introduser `console.log()`-utsagn i CV-applikasjonen din for å spore verdien av
 **Eksempel:** Når en bruker prøver å legge til en ny ferdighet i CV-en sin, logger du tidspunktet og selve ferdigheten for å bekrefte at den blir lagt til som forventet.  
 [Se et eksempel her](https://developer.mozilla.org/en-US/docs/Web/API/Console/log)
 
-**Løsning:** 
+<details><summary>Løsning</summary>
+
 For å introdusere logging, kan du bruke `console.log()` på strategiske steder i koden:
 
-<details><summary>Se full kode</summary>
 
 ```javascript
 const addSkill = (skill) => {
@@ -23,13 +22,15 @@ const addSkill = (skill) => {
   // Resten av koden som legger til ferdigheten
 }
 ```
-</details>
 
 **Forklaring:** 
 Ved å logge tidspunktet og ferdigheten, kan vi bekrefte at ferdigheten blir lagt til som forventet.
 
+</details>
+
 > [!TIP]
 > Bruk `console.log()` strategisk for å spore variabler og hendelser i applikasjonen din. Dette kan hjelpe deg med å forstå flyten og finne feil raskere.
+
 
 ### **Oppgave 2: Jest Grunnleggende - Testing av Funksjoner**
 
@@ -40,9 +41,10 @@ Tenk deg at du har en funksjon som formaterer telefonnummeret for CV-en. Den ska
 Skriv en Jest-test for å bekrefte at funksjonen riktig formaterer ulike varianter av telefonnumre til ønsket format.  
 [Link: Telefonnummer formatering med Jest](https://jestjs.io/docs/getting-started)
 
-**Steg 1: Opprett funksjonen som skal testes**
 
-<details><summary>Se full kode</summary>
+<details><summary>Løsning</summary>
+
+**Steg 1: Definer funksjonen som skal testes**
 
 ```javascript
 // formatPhone.js
@@ -50,17 +52,12 @@ const formatPhone = (phone) => {
   // Formatering logikk
 }
 ```
-</details>
+
 
 **Forklaring:** 
 Denne funksjonen skal ta et telefonnummer som input og returnere det i ønsket format.
 
-> [!NOTE]
-> Sørg for at funksjonen håndterer ulike formater av telefonnumre og returnerer dem i et konsistent format.
-
 **Steg 2: Skriv en Jest-test for funksjonen**
-
-<details><summary>Se full kode</summary>
 
 ```javascript
 // formatPhone.test.js
@@ -69,10 +66,12 @@ test('formats phone numbers correctly', () => {
   // ... flere tester
 });
 ```
-</details>
+
 
 **Forklaring:** 
 Med Jest, kan vi enkelt skrive tester for funksjoner som `formatPhone` for å sikre at de virker som forventet.
+
+</details>
 
 > [!IMPORTANT]
 > Testing av funksjoner er avgjørende for å sikre at applikasjonen din fungerer som forventet og for å unngå feil i produksjon.
@@ -86,9 +85,9 @@ I CV-appen kan brukere legge til ferdigheter. Tenk deg at du har en funksjon som
 Skriv en Jest-test for å sjekke at når en ferdighet legges til, er den faktisk lagt til i listen. Du bør også teste hva som skjer hvis brukeren prøver å legge til en tom ferdighet eller en ferdighet som allerede er på listen.  
 [Link: Teste arrays og iterables med Jest](https://jestjs.io/docs/tutorial-async)
 
-**Steg 1: Opprett funksjonen som skal testes**
+<details><summary>Løsning</summary>
 
-<details><summary>Se full kode</summary>
+**Steg 1: Opprett funksjonen som skal testes**
 
 ```javascript
 // skills.js
@@ -99,17 +98,11 @@ const addSkill = (skills, skill) => {
   return skills;
 }
 ```
-</details>
 
 **Forklaring:** 
 Denne funksjonen tar en liste av ferdigheter og en ny ferdighet som input, og legger til den nye ferdigheten i listen hvis den ikke allerede finnes der.
 
-> [!CAUTION]
-> Sørg for at funksjonen håndterer tilfeller der ferdigheten allerede finnes i listen eller er tom.
-
 **Steg 2: Skriv en Jest-test for funksjonen**
-
-<details><summary>Se full kode</summary>
 
 ```javascript
 // skills.test.js
@@ -119,10 +112,11 @@ test('adds a skill to the list', () => {
   expect(updatedSkills).toContain('React');
 });
 ```
-</details>
 
 **Forklaring:** 
 Med Jest, kan vi skrive tester for funksjoner som legger til eller fjerner ferdigheter fra en liste for å sikre korrekt funksjonalitet.
+
+</details>
 
 > [!TIP]
 > Test både positive og negative tilfeller for å sikre at funksjonen din håndterer alle mulige scenarier.
@@ -136,9 +130,9 @@ Tenk deg at du har en knapp i CV-appen som, når den blir klikket, åpner et vin
 Skriv en Jest-test som simulerer et klikk på denne knappen og bekrefter at redigeringsvinduet faktisk åpnes.  
 [Link: Simuler events med Jest og @testing-library/react](https://testing-library.com/docs/dom-testing-library/api-events/)
 
-**Steg 1: Opprett komponenten som skal testes**
+<details><summary>Løsning</summary>
 
-<details><summary>Se full kode</summary>
+**Steg 1: Opprett komponenten som skal testes**
 
 ```javascript
 // EditButton.js
@@ -161,17 +155,11 @@ const EditButton = () => {
 
 export default EditButton;
 ```
-</details>
 
 **Forklaring:** 
 Denne komponenten viser en knapp som, når den blir klikket, åpner et redigeringsvindu.
 
-> [!NOTE]
-> Bruk `useState` for å håndtere tilstanden til redigeringsvinduet.
-
 **Steg 2: Skriv en Jest-test for komponenten**
-
-<details><summary>Se full kode</summary>
 
 ```javascript
 // EditButton.test.js
@@ -184,10 +172,11 @@ test('opens edit window on click', () => {
   expect(getByText('Edit Window')).toBeInTheDocument();
 });
 ```
-</details>
 
 **Forklaring:** 
 Med kombinasjonen av Jest og `@testing-library/react`, kan vi simulere brukerinteraksjoner og teste UI-komponenter.
+
+</details>
 
 > [!IMPORTANT]
 > Testing av UI-komponenter sikrer at brukergrensesnittet ditt fungerer som forventet og gir en god brukeropplevelse.
@@ -201,8 +190,6 @@ I denne oppgaven skal du finne og rette en feil i en gitt kode. Koden nedenfor e
 
 **Kode som skal feilsøkes:**
 
-<details><summary>Se full kode</summary>
-
 ```javascript
 // skills.js
 const addSkill = (skills, skill) => {
@@ -212,17 +199,13 @@ const addSkill = (skills, skill) => {
   return skills;
 }
 ```
-</details>
 
-**Forklaring:** 
-Denne funksjonen skal legge til en ferdighet i en liste hvis ferdigheten ikke allerede finnes i listen og ferdigheten ikke er tom.
+<details><summary>Løsning</summary>
 
 **Løsning:** 
 Feilen ligger i betingelsen `if (skill || !skills.includes(skill))`. Den skal bruke en logisk OG (`&&`) i stedet for en logisk ELLER (`||`).
 
 **Rettet kode:**
-
-<details><summary>Se full kode</summary>
 
 ```javascript
 // skills.js
@@ -233,14 +216,12 @@ const addSkill = (skills, skill) => {
   return skills;
 }
 ```
-</details>
 
 **Forklaring:** 
 Ved å bruke `&&` i stedet for `||`, sikrer vi at ferdigheten kun legges til hvis den ikke er tom og ikke allerede finnes i listen.
 
-
-
-### **Oppgave 5: Snapshot Testing**
+</details>
+### **Oppgave 6: Snapshot Testing**
 
 **Mål:** Forstå grunnprinsippene for snapshot testing og hvordan det kan brukes for å sikre at UI ikke endres utilsiktet.
 
@@ -375,9 +356,6 @@ test('EducationHistory component renders correctly', () => {
 </details>
 
 Ved å rette filbanen til `EducationHistory`-komponenten, vil snapshot-testen kjøre korrekt og sammenligne komponentens output med den lagrede snapshoten.
-
-
-
 ## Innføring i `PropTypes` & `TypeScript`
 
 ### **Oppgave 1: Intro til PropTypes**
@@ -676,9 +654,6 @@ export default UserList;
 ```
 
 Ved å legge til `import PropTypes from 'prop-types';` øverst i filen, sikrer vi at `PropTypes` er tilgjengelig for komponenten, og typekontrollen vil fungere som forventet.
-
-
-
 ### **Oppgave 5: Feilsøking i TypeScript**
 
 **Mål:** Lære å identifisere og rette opp feil i TypeScript-kode.
@@ -786,9 +761,6 @@ Feilsøking er en viktig ferdighet i utvikling, spesielt når du jobber med Type
 
 [TypeScript Error Handling](https://www.typescriptlang.org/docs/handbook/basic-types.html)  
 [React and TypeScript: Props](https://fettblog.eu/typescript-react/props/)
-
-
-
 ### **Oppgave 5: Bruk av Type Assertions**
 
 **Mål:** Forstå hvordan og når du skal bruke type assertions i TypeScript.
@@ -929,5 +901,3 @@ Generiske typer tillater deg å lage fleksible funksjoner og komponenter som kan
 
 [TypeScript Handbook: Generics](https://www.typescriptlang.org/docs/handbook/generics.html)  
 [Understanding TypeScript Generics](https://www.tutorialsteacher.com/typescript/typescript-generics)
-
-
