@@ -296,6 +296,9 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
     export default App;
     ```
 
+
+
+
 ## Innføring i `Components` & `Props` i React
 
 ### Oppgave 1: Oppsett av Prosjektstruktur
@@ -783,7 +786,10 @@ Når du bruker `npm create vite`-kommandoen for å opprette et nytt prosjekt, vi
    export default App;
    ```
 
-   </details>## Innføring i React `Hooks: useState`
+   </details>
+
+
+## Innføring i React `Hooks: useState`
 
 ### Oppgave 1: Vis CV-informasjon
 
@@ -1302,3 +1308,6 @@ export default App;
 ```
 
 </details>
+
+
+
