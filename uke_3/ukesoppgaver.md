@@ -221,6 +221,8 @@ const addSkill = (skills, skill) => {
 Ved å bruke `&&` i stedet for `||`, sikrer vi at ferdigheten kun legges til hvis den ikke er tom og ikke allerede finnes i listen.
 
 </details>
+
+
 ### **Oppgave 6: Snapshot Testing**
 
 **Mål:** Forstå grunnprinsippene for snapshot testing og hvordan det kan brukes for å sikre at UI ikke endres utilsiktet.
@@ -356,6 +358,9 @@ test('EducationHistory component renders correctly', () => {
 </details>
 
 Ved å rette filbanen til `EducationHistory`-komponenten, vil snapshot-testen kjøre korrekt og sammenligne komponentens output med den lagrede snapshoten.
+
+
+
 ## Innføring i `PropTypes` & `TypeScript`
 
 ### **Oppgave 1: Intro til PropTypes**
@@ -654,6 +659,9 @@ export default UserList;
 ```
 
 Ved å legge til `import PropTypes from 'prop-types';` øverst i filen, sikrer vi at `PropTypes` er tilgjengelig for komponenten, og typekontrollen vil fungere som forventet.
+
+
+
 ### **Oppgave 5: Feilsøking i TypeScript**
 
 **Mål:** Lære å identifisere og rette opp feil i TypeScript-kode.
@@ -761,6 +769,9 @@ Feilsøking er en viktig ferdighet i utvikling, spesielt når du jobber med Type
 
 [TypeScript Error Handling](https://www.typescriptlang.org/docs/handbook/basic-types.html)  
 [React and TypeScript: Props](https://fettblog.eu/typescript-react/props/)
+
+
+
 ### **Oppgave 5: Bruk av Type Assertions**
 
 **Mål:** Forstå hvordan og når du skal bruke type assertions i TypeScript.
@@ -901,3 +912,5 @@ Generiske typer tillater deg å lage fleksible funksjoner og komponenter som kan
 
 [TypeScript Handbook: Generics](https://www.typescriptlang.org/docs/handbook/generics.html)  
 [Understanding TypeScript Generics](https://www.tutorialsteacher.com/typescript/typescript-generics)
+
+
