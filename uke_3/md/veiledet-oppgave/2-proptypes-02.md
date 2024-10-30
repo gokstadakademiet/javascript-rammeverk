@@ -1,4 +1,4 @@
-### **Oppgave 5: Feilsøking i TypeScript**
+### **Oppgave 4: Feilsøking i TypeScript**
 
 **Mål:** Lære å identifisere og rette opp feil i TypeScript-kode.
 
@@ -7,17 +7,11 @@ I denne oppgaven skal du feilsøke en `Profile`-komponent som er skrevet i TypeS
 
 **Link:** [TypeScript Error Handling](https://www.typescriptlang.org/docs/handbook/basic-types.html)
 
-1. **Åpne `Profile`-komponenten:**  
-   Gå til filen hvor `Profile`-komponenten ligger. Filen skal ha endelsen `.tsx`.
+> [!NOTE]  
+> Hvis du ønsker å teste dette loktalt, er det viktig at filen har endingen `.tsx`, og ikke `.jsx`.
 
-  > [!NOTE]  
-  > I TypeScript, bruker vi `.tsx`-filer for React-komponenter som inneholder JSX. Dette gjør at vi kan dra nytte av TypeScript sine typer samtidig som vi skriver JSX-syntaks.
-
-2. **Se gjennom koden og identifiser feilen:**  
    Her er koden for `Profile`-komponenten:
 
-   <details><summary>Se full kode</summary>
-   
    ```typescript
    import React, { FC } from 'react';
 
@@ -49,16 +43,9 @@ I denne oppgaven skal du feilsøke en `Profile`-komponent som er skrevet i TypeS
    export default Profile;
    ```
 
-   **Forklaring:**  
-   Koden ovenfor skal vise brukerens navn, alder og arbeidserfaring. Arbeidserfaringen er en liste av objekter som inneholder `title` og `years`.
+<details><summary>Løsning</summary>
 
-3. **Finn og rett opp feilen:**  
-   Identifiser feilen i koden og rett den opp. 
-
-**Løsningsforslag:**  
 Feilen i koden er at `experience`-prop ikke blir sendt inn i riktig format. Her er den korrigerte koden:
-
-<details><summary>Se full kode</summary>
 
 ```typescript
 import React, { FC } from 'react';

@@ -5,8 +5,10 @@
 **Mål:** Introduser logging for å spore hendelser i applikasjonen.
 
 **Beskrivelse:**  
-Introduser `console.log()`-utsagn i CV-applikasjonen din for å spore verdien av variabler på viktige tidspunkter, for eksempel når brukeren legger til eller sletter en erfaring eller ferdighet.  
+Introduser `console.log()`-utsagn i CV-applikasjonen din for å spore verdien av variabler på viktige tidspunkter, for eksempel når brukeren legger til eller sletter en erfaring eller ferdighet. 
+ 
 **Eksempel:** Når en bruker prøver å legge til en ny ferdighet i CV-en sin, logger du tidspunktet og selve ferdigheten for å bekrefte at den blir lagt til som forventet.  
+
 [Se et eksempel her](https://developer.mozilla.org/en-US/docs/Web/API/Console/log)
 
 <details><summary>Løsning</summary>
@@ -36,8 +38,11 @@ Ved å logge tidspunktet og ferdigheten, kan vi bekrefte at ferdigheten blir lag
 **Mål:** Test funksjoner som hjelper med å formatere data for CV-appen.
 
 **Beskrivelse:**  
+
 Tenk deg at du har en funksjon som formaterer telefonnummeret for CV-en. Den skal sørge for at alle telefonnumre har en bestemt format, for eksempel +47-12345678.  
+
 Skriv en Jest-test for å bekrefte at funksjonen riktig formaterer ulike varianter av telefonnumre til ønsket format.  
+
 [Link: Telefonnummer formatering med Jest](https://jestjs.io/docs/getting-started)
 
 
@@ -80,8 +85,11 @@ Med Jest, kan vi enkelt skrive tester for funksjoner som `formatPhone` for å si
 **Mål:** Test funksjoner som legger til eller fjerner ferdigheter fra CV-en.
 
 **Beskrivelse:**  
+
 I CV-appen kan brukere legge til ferdigheter. Tenk deg at du har en funksjon som tar en ferdighet og legger den til en liste.  
+
 Skriv en Jest-test for å sjekke at når en ferdighet legges til, er den faktisk lagt til i listen. Du bør også teste hva som skjer hvis brukeren prøver å legge til en tom ferdighet eller en ferdighet som allerede er på listen.  
+
 [Link: Teste arrays og iterables med Jest](https://jestjs.io/docs/tutorial-async)
 
 <details><summary>Løsning</summary>
@@ -125,8 +133,10 @@ Med Jest, kan vi skrive tester for funksjoner som legger til eller fjerner ferdi
 **Mål:** Bli kjent med hvordan du kan bruke Jest for å teste interaktive aspekter av CV-appen.
 
 **Beskrivelse:**  
+
 Tenk deg at du har en knapp i CV-appen som, når den blir klikket, åpner et vindu eller en modal der brukere kan redigere sin erfaring.  
 Skriv en Jest-test som simulerer et klikk på denne knappen og bekrefter at redigeringsvinduet faktisk åpnes.  
+
 [Link: Simuler events med Jest og @testing-library/react](https://testing-library.com/docs/dom-testing-library/api-events/)
 
 <details><summary>Løsning</summary>
@@ -185,6 +195,7 @@ Med kombinasjonen av Jest og `@testing-library/react`, kan vi simulere brukerint
 **Mål:** Lær å identifisere og rette feil i koden.
 
 **Beskrivelse:**  
+
 I denne oppgaven skal du finne og rette en feil i en gitt kode. Koden nedenfor er ment å legge til en ferdighet i en liste, men det er en feil som hindrer den fra å fungere som forventet. Finn feilen og rett den.
 
 **Kode som skal feilsøkes:**

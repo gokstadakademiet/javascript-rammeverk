@@ -7,7 +7,7 @@ I CV-applikasjonen, opprett en hjelpefunksjon `parseUserData` som tar en streng 
 
 **Link:** [TypeScript Type Assertions](https://www.typescriptlang.org/docs/handbook/basic-types.html#type-assertions)
 
-**Trinnvis Løsning:**
+<details><summary>Løsning</summary>
 
 1. **Opprett en ny fil:**  
    Lag en ny fil kalt `UserProfile.ts`.
@@ -36,9 +36,10 @@ Dette er nyttig når vi vet hvilken form dataen vil ha, selv om TypeScript ikke 
 
 Merk: Mens type assertions kan være kraftige, bør de brukes varsomt. Å forsikre TypeScript feilaktig om en types form kan føre til uventede feil som er vanskelige å feilsøke.
 
+</details>
+
 [TypeScript Type Assertions](https://www.typescriptlang.org/docs/handbook/basic-types.html#type-assertions)  
 [Assert function argument is a certain type in TypeScript](https://stackoverflow.com/questions/40081332/assert-function-argument-is-a-certain-type-in-typescript)
-
 
 ### **Oppgave 6: Union Typer og Literal Typer**
 
@@ -49,7 +50,7 @@ Lag en komponent `Filter` i CV-applikasjonen som lar brukere filtrere jobberfari
 
 **Link:** [TypeScript Union and Literal Types](https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html)
 
-**Trinnvis Løsning:**
+<details><summary>Løsning</summary>
 
 1. **Opprett en ny fil:**  
    Lag en ny fil kalt `Filter.tsx`.
@@ -89,6 +90,8 @@ I `Filter`-komponenten bruker vi type-sjekker (`typeof filterBy === 'string'`) f
 
 Union og literal typer i TypeScript gir fleksibilitet i definisjonen av variable typer, samtidig som de gir sterk typesikkerhet.
 
+</details>
+
 [TypeScript Union and Literal Types](https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html)  
 [Practical TypeScript: Union and Intersection Types](https://dzone.com/articles/practical-typescript-union-and-intersection-types)
 
@@ -104,7 +107,7 @@ Lag en generisk funksjon `getDetails` som tar en array av objekter og en nøkkel
 
 **Link:** [TypeScript Handbook: Generics](https://www.typescriptlang.org/docs/handbook/generics.html)
 
-**Trinnvis Løsning:**
+<details><summary>Løsning</summary>
 
 1. **Opprett en ny fil:**  
    Lag en ny fil kalt `Utilities.ts`.
@@ -135,6 +138,8 @@ Den første generiske typen, `T`, representerer en hvilken som helst type. Den a
 Ved å kalle `getDetails` med `jobExperiences`-arrayen og nøkkelen 'jobTitle', får vi en ny array som inneholder kun jobbtitlene fra `jobExperiences`.
 
 Generiske typer tillater deg å lage fleksible funksjoner og komponenter som kan håndtere mange forskjellige datatyper samtidig som de gir type-sikkerhet.
+
+</details>
 
 [TypeScript Handbook: Generics](https://www.typescriptlang.org/docs/handbook/generics.html)  
 [Understanding TypeScript Generics](https://www.tutorialsteacher.com/typescript/typescript-generics)
