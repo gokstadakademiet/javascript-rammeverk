@@ -10,10 +10,9 @@ Vi oppfordrer deg til å lese gjennom disse artiklene grundig, da de vil gi deg 
 
 ### Hva er React JS
 - [What is React](https://www.technigo.io/explained/what-is-react)
-- [React JS Explained In 10 Minutes](https://www.youtube.com/watch?v=yc6elaGOoGQ) - YouTube · Dennis Ivy · Nov 7, 2021
+- [React JS Explained In 10 Minutes](https://www.youtube.com/watch?v=s2skans2dP4) - YouTube · Dennis Ivy · Nov 7, 2021
 - [What is React Used For](https://www.monterail.com/blog/what-is-react-used-for)
-- [React JS Explained In 10 Minutes](https://www.youtube.com/watch?v=yc6elaGOoGQ)
-- [What Is React And Why You Need To Know It](https://www.youtube.com/watch?v=yc6elaGOoGQ)
+- [What Is React And Why You Need To Know It](https://www.youtube.com/watch?v=1wZoGFF_oi4)
 - [Thinking in React](https://react.dev/learn/thinking-in-react)
 
 ### Vite, Første React App, Struktur, JSX
@@ -21,10 +20,10 @@ Vi oppfordrer deg til å lese gjennom disse artiklene grundig, da de vil gi deg 
 `Vite` er et moderne byggverktøy som er raskere og mer effektivt enn `create-react-app`, og det er viktig å lære hvordan du bruker det for å dra nytte av disse fordelene.
 
 - [How to Create a React App with Vite](https://medium.com/@miahossain8888/how-to-create-a-react-app-with-vite-571883b100ef)
-- [Vite React Project in 5 Minutes 🔥](https://www.youtube.com/watch?v=yc6elaGOoGQ)
-- [Vite in 100 Seconds](https://www.youtube.com/watch?v=yc6elaGOoGQ)
-- [Vite Crash Course | Faster Alternative To CRA](https://www.youtube.com/watch?v=yc6elaGOoGQ)
-- [Create and Deploy a Website with REACT and VITE in Under 10 Minutes](https://www.youtube.com/watch?v=yc6elaGOoGQ)
+- [Vite React Project in 5 Minutes 🔥](https://www.youtube.com/watch?app=desktop&v=vr-I2HIVmTw)
+- [Vite in 100 Seconds](https://www.youtube.com/watch?v=KCrXgy8qtjM)
+- [Vite Crash Course | Faster Alternative To CRA](https://www.youtube.com/watch?v=89NJdbYTgJ8)
+- [Create and Deploy a Website with REACT and VITE in Under 10 Minutes](https://www.youtube.com/watch?v=XMGOfJxnH7s)
 
 ### Pakkehåndtering -> `npm` vs `yarn`
 
@@ -32,7 +31,7 @@ Vi oppfordrer deg til å lese gjennom disse artiklene grundig, da de vil gi deg 
 
 - [Difference Between npm and yarn](https://www.naukri.com/code360/library/difference-between-npm-and-yarn)
 - [npm vs yarn](https://medium.com/@salluarsh/npm-vs-yarn-f4a7331442b7)
-- [NPM vs YARN | Which is the Best Package Manager? - Beginner Guide 🚀](https://www.youtube.com/watch?v=yc6elaGOoGQ)
+- [NPM vs YARN | Which is the Best Package Manager? - Beginner Guide 🚀](https://www.youtube.com/watch?v=mVn96aLDozE)
 
 > [!TIP]
 > Prøv å installere en pakke med både npm og yarn for å se forskjellene i praksis.
@@ -69,7 +68,7 @@ Vi oppfordrer deg til å lese gjennom disse artiklene grundig, da de vil gi deg 
 - [React vs React DOM](https://medium.com/programming-sage/react-vs-react-dom-a0ed3aea9745)
 - [ReactDOM](https://www.copycat.dev/blog/reactdom/)
 - [The Role of the Virtual DOM in React's Reconciliation](https://refine.dev/blog/react-virtual-dom/#the-role-of-the-virtual-dom-in-reacts-reconciliation) (mer detaljert)
-- [How the Virtual DOM Works? ReactJS Tutorial - Virtual DOM](https://www.youtube.com/watch?v=yc6elaGOoGQ)
+- [How the Virtual DOM Works? ReactJS Tutorial - Virtual DOM](https://www.youtube.com/watch?v=VZkedHQjLhA)
 
 > [!WARNING]
 > Ikke forveksle React DOM med den vanlige DOM. De fungerer på forskjellige måter og har ulike formål.
