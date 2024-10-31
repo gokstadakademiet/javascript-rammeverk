@@ -15,3 +15,4 @@ test-uke-1
 **/*tekst.md
 **/reveal.js
 !uke_2/reveal.js
+**/ukens-plan.md
