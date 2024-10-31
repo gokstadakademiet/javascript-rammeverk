@@ -195,39 +195,69 @@ Med kombinasjonen av Jest og `@testing-library/react`, kan vi simulere brukerint
 **Mål:** Lær å identifisere og rette feil i koden.
 
 **Beskrivelse:**  
-
-I denne oppgaven skal du finne og rette en feil i en gitt kode. Koden nedenfor er ment å legge til en ferdighet i en liste, men det er en feil som hindrer den fra å fungere som forventet. Finn feilen og rett den.
+I denne oppgaven skal du finne og rette en feil i en gitt kode. Koden nedenfor er ment å legge til et element i en handleliste, men det er en feil som hindrer den fra å fungere som forventet. Finn feilen og rett den.
 
 **Kode som skal feilsøkes:**
 
 ```javascript
-// skills.js
-const addSkill = (skills, skill) => {
-  if (skill || !skills.includes(skill)) {
-    skills.push(skill);
+// shoppingList.js
+const addItem = (list, item) => {
+  if (item || !list.includes(item)) {
+    list.push(item);
   }
-  return skills;
+  return list;
 }
 ```
 
 <details><summary>Løsning</summary>
 
 **Løsning:** 
-Feilen ligger i betingelsen `if (skill || !skills.includes(skill))`. Den skal bruke en logisk OG (`&&`) i stedet for en logisk ELLER (`||`).
+Feilen ligger i betingelsen `if (item || !list.includes(item))`. Den skal bruke en logisk OG (`&&`) i stedet for en logisk ELLER (`||`).
 
 **Rettet kode:**
 
 ```javascript
-// skills.js
-const addSkill = (skills, skill) => {
-  if (skill && !skills.includes(skill)) {
-    skills.push(skill);
+// shoppingList.js
+const addItem = (list, item) => {
+  if (item && !list.includes(item)) {
+    list.push(item);
   }
-  return skills;
+  return list;
 }
 ```
 
 **Forklaring:** 
-Ved å bruke `&&` i stedet for `||`, sikrer vi at ferdigheten kun legges til hvis den ikke er tom og ikke allerede finnes i listen.
+Ved å bruke `&&` i stedet for `||`, sikrer vi at elementet kun legges til hvis det ikke er tomt og ikke allerede finnes i listen.
 
 </details>
+
+**Jest Tester**
+
+For å sikre at koden fungerer som forventet etter rettingen, kan du bruke følgende Jest tester:
+
+```javascript
+// shoppingList.test.js
+test('adds a new item to the list', () => {
+  const list = ['apple', 'banana'];
+  const result = addItem(list, 'orange');
+  expect(result).toEqual(['apple', 'banana', 'orange']);
+});
+
+test('does not add an existing item to the list', () => {
+  const list = ['apple', 'banana'];
+  const result = addItem(list, 'banana');
+  expect(result).toEqual(['apple', 'banana']);
+});
+
+test('does not add an empty item to the list', () => {
+  const list = ['apple', 'banana'];
+  const result = addItem(list, '');
+  expect(result).toEqual(['apple', 'banana']);
+});
+
+test('does not add a null item to the list', () => {
+  const list = ['apple', 'banana'];
+  const result = addItem(list, null);
+  expect(result).toEqual(['apple', 'banana']);
+});
+```

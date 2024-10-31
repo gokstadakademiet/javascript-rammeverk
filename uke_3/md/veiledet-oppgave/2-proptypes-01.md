@@ -15,61 +15,97 @@ Opprett en React-komponent `Profile` som viser grunnleggende brukerinformasjon. 
 <details><summary>Løsning</summary>
 
 1. **Opprett en ny React-komponent kalt `Profile`:**  
-   Begynn med å opprette en ny fil kalt `Profile.jsx` i prosjektets komponentmappe. Dette er hvor vi skal skrive vår React-komponent.
+  Begynn med å opprette en ny fil kalt `Profile.jsx` i prosjektets komponentmappe. Dette er hvor vi skal skrive vår React-komponent.
 
 2. **Skriv komponenten:**  
-   Innenfor `Profile.jsx`, importer React og PropTypes. Dette er nødvendig for å kunne bruke React og PropTypes i vår komponent.
+  Innenfor `Profile.jsx`, importer React og PropTypes. Dette er nødvendig for å kunne bruke React og PropTypes i vår komponent.
 
-   ```javascript
-   import React from 'react';
-   import PropTypes from 'prop-types';
-   ```
+  ```javascript
+  import React from 'react';
+  import PropTypes from 'prop-types';
+  ```
 
-   Deretter, opprett `Profile`-komponenten. En komponent i React er en funksjon som returnerer JSX, som er en syntaksutvidelse for JavaScript som ligner på HTML.
+  Deretter, opprett `Profile`-komponenten. En komponent i React er en funksjon som returnerer JSX, som er en syntaksutvidelse for JavaScript som ligner på HTML.
 
-   ```javascript
-   const Profile = ({ name, age, experience }) => {
-     return (
-       <div>
-         <h2>{name}</h2>
-         <p>Age: {age}</p>
-         <ul>
-           {experience.map((exp, index) => (
-             <li key={index}>
-               {exp.title} - {exp.years} years
-             </li>
-           ))}
-         </ul>
-       </div>
-     );
-   };
-   ```
+  ```javascript
+  const Profile = ({ name, age, experience }) => {
+    return (
+     <div>
+      <h2>{name}</h2>
+      <p>Age: {age}</p>
+      <ul>
+        {experience.map((exp, index) => (
+         <li key={index}>
+          {exp.title} - {exp.years} years
+         </li>
+        ))}
+      </ul>
+     </div>
+    );
+  };
+  ```
 
-   I denne komponenten tar vi inn `name`, `age`, og `experience` som props og viser dem i en enkel HTML-struktur. `experience` er en array, så vi bruker `map`-funksjonen for å iterere over hvert element og vise det i en liste.
+  I denne komponenten tar vi inn `name`, `age`, og `experience` som props og viser dem i en enkel HTML-struktur. `experience` er en array, så vi bruker `map`-funksjonen for å iterere over hvert element og vise det i en liste.
 
 3. **Legg til PropTypes:**  
-   Under komponenten, definer PropTypes for `Profile`. PropTypes er et bibliotek som lar oss spesifisere hvilke typer props en komponent skal motta. Dette hjelper med å fange feil tidlig i utviklingsprosessen.
+  Under komponenten, definer PropTypes for `Profile`. PropTypes er et bibliotek som lar oss spesifisere hvilke typer props en komponent skal motta. Dette hjelper med å fange feil tidlig i utviklingsprosessen.
 
-   ```javascript
-   Profile.propTypes = {
-     name: PropTypes.string.isRequired,
-     age: PropTypes.number.isRequired,
-     experience: PropTypes.arrayOf(
-       PropTypes.shape({
-         title: PropTypes.string.isRequired,
-         years: PropTypes.number.isRequired,
-       })
-     ).isRequired,
-   };
-   ```
+  ```javascript
+  Profile.propTypes = {
+    name: PropTypes.string.isRequired,
+    age: PropTypes.number.isRequired,
+    experience: PropTypes.arrayOf(
+     PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      years: PropTypes.number.isRequired,
+     })
+    ).isRequired,
+  };
+  ```
 
-   **Her spesifiserer vi at `name` skal være en streng, `age` skal være et nummer, og `experience` skal være en array av objekter. Hvert objekt i `experience`-arrayen skal ha en `title` som er en streng og `years` som er et nummer. `isRequired` betyr at disse propsene er obligatoriske.**
+  **Her spesifiserer vi at `name` skal være en streng, `age` skal være et nummer, og `experience` skal være en array av objekter. Hvert objekt i `experience`-arrayen skal ha en `title` som er en streng og `years` som er et nummer. `isRequired` betyr at disse propsene er obligatoriske.**
 
-   Deretter, eksporter `Profile`-komponenten. Dette gjør at vi kan importere og bruke `Profile`-komponenten i andre deler av vår applikasjon.
+  Deretter, eksporter `Profile`-komponenten. Dette gjør at vi kan importere og bruke `Profile`-komponenten i andre deler av vår applikasjon.
 
-   ```javascript
-   export default Profile;
-   ```
+  ```javascript
+  export default Profile;
+  ```
+
+4. **Demonstrer bruk av PropTypes i praksis:**  
+  For å demonstrere hvordan PropTypes fungerer, kan vi opprette en annen komponent som bruker `Profile` og med vilje utelate en av de nødvendige propsene. Dette vil utløse en advarsel i konsollen.
+
+  ```javascript
+  import React from 'react';
+  import Profile from './Profile';
+
+  const App = () => {
+    const user = {
+     name: 'John Doe',
+     // age is missing to demonstrate PropTypes warning
+     experience: [
+      { title: 'Developer', years: 5 },
+      { title: 'Designer', years: 3 },
+     ],
+    };
+
+    return (
+     <div>
+      <h1>User Profile</h1>
+      <Profile name={user.name} experience={user.experience} />
+     </div>
+    );
+  };
+
+  export default App;
+  ```
+
+  Når `App`-komponenten rendres, vil det mangle `age`-prop for `Profile`. Åpne konsollen i Chrome (høyreklikk på siden, velg "Inspect", og gå til "Console"-fanen) for å se advarselen generert av PropTypes.
+
+  ```plaintext
+  Warning: Failed prop type: The prop `age` is marked as required in `Profile`, but its value is `undefined`.
+  ```
+
+  Denne advarselen hjelper utviklere med å identifisere og rette feil tidlig i utviklingsprosessen.
 
 **Forklaring:**
 
@@ -199,41 +235,6 @@ I denne oppgaven skal du finne og rette feil i en gitt React-komponent. Koden ne
 
 ```javascript
 import React from 'react';
-
-const UserList = ({ users }) => {
-  return (
-    <div>
-      <h1>User List</h1>
-      <ul>
-        {users.map(user => (
-          <li key={user.id}>
-            {user.name} - {user.age} years old
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
-
-UserList.propTypes = {
-  users: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      age: PropTypes.number.isRequired,
-    })
-  ).isRequired,
-};
-
-export default UserList;
-```
-
-<details><summary>Løsning</summary>
-
-Feilen i koden er at `PropTypes` ikke er importert, noe som vil føre til en feil når komponenten prøver å bruke `PropTypes` for typekontroll. For å rette feilen, må vi importere `PropTypes` fra `prop-types`-biblioteket.
-
-```javascript
-import React from 'react';
 import PropTypes from 'prop-types';
 
 const UserList = ({ users }) => {
@@ -264,6 +265,36 @@ UserList.propTypes = {
 export default UserList;
 ```
 
-Ved å legge til `import PropTypes from 'prop-types';` øverst i filen, sikrer vi at `PropTypes` er tilgjengelig for komponenten, og typekontrollen vil fungere som forventet.
+**Initial list of users with errors:**
+
+```javascript
+const users = [
+  { id: "1", name: 'Alice', age: 25 }, // Incorrect type for id
+  { id: "2", name: 'Bob' }, // Missing age prop and incorrect type for id
+  { id: "3", name: 'Charlie', age: 'thirty' } // Incorrect type for age and id
+];
+```
+
+<details><summary>Løsning</summary>
+
+Feilene i koden er:
+1. `id`-propen er definert som et nummer, men sendes inn som en streng.
+2. Brukeren Bob mangler `age`-prop.
+3. Brukeren Charlie har `age`-prop med feil type (streng i stedet for nummer).
+
+For å rette feilene, må vi oppdatere `users`-arrayen slik at alle brukere har riktige props og typer.
+
+```javascript
+const users = [
+  { id: 1, name: 'Alice', age: 25 }, // Corrected type for id
+  { id: 2, name: 'Bob', age: 30 }, // Added missing age prop and corrected type for id
+  { id: 3, name: 'Charlie', age: 30 } // Corrected type for age and id
+];
+```
+
+Ved å rette typen for `id`, legge til den manglende `age`-propen for Bob, og rette typen for Charlie, sikrer vi at `UserList`-komponenten mottar riktige props og typer, og typekontrollen vil fungere som forventet.
 
 </details>
+
+
+

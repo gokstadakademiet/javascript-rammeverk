@@ -1,32 +1,47 @@
 ### **Oppgave 5: Bruk av Type Assertions**
-
 **Mål:** Forstå hvordan og når du skal bruke type assertions i TypeScript.
 
 **Beskrivelse:**  
 I CV-applikasjonen, opprett en hjelpefunksjon `parseUserData` som tar en streng (JSON format) og konverterer den til et objekt. Bruk type assertions for å forsikre TypeScript at den returnerte verdien er av en spesifikk type (f.eks. `UserProfile` type).
+
+Bruk for eksempel følgende grensesnitt og JSON streng:
+
+```typescript
+interface UserProfile {
+       name: string;
+       age: number;
+       experience: { title: string; years: number }[];
+    }
+```
+
+`'{"name":"John Doe","age":30,"experience":[{"title":"Developer","years":5},{"title":"Manager","years":3}]}'`
 
 **Link:** [TypeScript Type Assertions](https://www.typescriptlang.org/docs/handbook/basic-types.html#type-assertions)
 
 <details><summary>Løsning</summary>
 
 1. **Opprett en ny fil:**  
-   Lag en ny fil kalt `UserProfile.ts`.
+    Lag en ny fil kalt `UserProfile.ts`.
 
 2. **Definer et grensesnitt for brukerprofildata:**  
 
-   ```typescript
-   interface UserProfile {
-     name: string;
-     age: number;
-     experience: { title: string; years: number }[];
-   }
-   ```
+    ```typescript
+    interface UserProfile {
+       name: string;
+       age: number;
+       experience: { title: string; years: number }[];
+    }
+    ```
 
 3. **Opprett funksjonen `parseUserData`:**  
 
-   ```typescript
-   const parseUserData = (jsonData: string): UserProfile => JSON.parse(jsonData) as UserProfile;
-   ```
+    ```typescript
+    const parseUserData = (jsonData: string): UserProfile => JSON.parse(jsonData) as UserProfile;
+
+    const jsonData = `'{"name":"John Doe","age":30,"experience":[{"title":"Developer","years":5},{"title":"Manager","years":3}]}'`;
+
+    const parsedUserData: UserProfile = parseUserData(jsonData);
+    ```
 
 **Forklaring:**
 
@@ -59,7 +74,7 @@ Lag en komponent `Filter` i CV-applikasjonen som lar brukere filtrere jobberfari
 
    ```typescript
    type JobTitle = 'Developer' | 'Designer' | 'Manager';
-   type FilterType = string | number;
+   type FilterType = JobTitle | number;
    ```
 
 3. **Opprett Filter-komponenten:**  
@@ -67,24 +82,51 @@ Lag en komponent `Filter` i CV-applikasjonen som lar brukere filtrere jobberfari
    ```typescript
    interface FilterProps {
      filterBy: FilterType;
+     experiences: { jobTitle: JobTitle; year: number }[];
    }
 
-   const Filter: React.FC<FilterProps> = ({ filterBy }) => {
-     if (typeof filterBy === 'string') {
-       // Filtrer etter jobbtittel
-       return <div>Filtering by job title: {filterBy}</div>;
-     } else if (typeof filterBy === 'number') {
-       // Filtrer etter årstall
-       return <div>Filtering by year: {filterBy}</div>;
-     } else {
-       return null;
-     }
+   const Filter: React.FC<FilterProps> = ({ filterBy, experiences }) => {
+     const filteredExperiences = experiences.filter(experience => {
+       if (typeof filterBy === 'string') {
+         return experience.jobTitle === filterBy;
+       } else if (typeof filterBy === 'number') {
+         return experience.year === filterBy;
+       }
+       return false;
+     });
+
+     return (
+       <div>
+         {filteredExperiences.map((experience, index) => (
+           <div key={index}>
+             <p>Job Title: {experience.jobTitle}</p>
+             <p>Year: {experience.year}</p>
+           </div>
+         ))}
+       </div>
+     );
    };
+   ```
+
+4. **Eksempel på bruk:**  
+
+   ```typescript
+   const jobExperiences = [
+     { jobTitle: 'Developer', year: 2020 },
+     { jobTitle: 'Designer', year: 2019 },
+     { jobTitle: 'Manager', year: 2021 },
+   ];
+
+   // Filtrer etter jobbtittel
+   <Filter filterBy="Developer" experiences={jobExperiences} />
+
+   // Filtrer etter årstall
+   <Filter filterBy={2019} experiences={jobExperiences} />
    ```
 
 **Forklaring:**
 
-Vi starter med å definere `JobTitle` som en literal type. Dette betyr at den kan være en av tre strenger: 'Developer', 'Designer', eller 'Manager'. Vi definerer deretter `FilterType` som en union type, noe som betyr at den kan være enten en `string` eller et `number`.
+Vi starter med å definere `JobTitle` som en literal type. Dette betyr at den kan være en av tre strenger: 'Developer', 'Designer', eller 'Manager'. Vi definerer deretter `FilterType` som en union type, noe som betyr at den kan være enten en `JobTitle` eller et `number`.
 
 I `Filter`-komponenten bruker vi type-sjekker (`typeof filterBy === 'string'`) for å avgjøre hvordan vi skal filtrere, basert på om `filterBy` er en streng eller et nummer. Denne tilnærmingen utnytter kraften av TypeScript for å sørge for at koden vår er type-sikker og gir forventet oppførsel basert på hvilken type data som sendes til komponenten.
 
@@ -94,9 +136,6 @@ Union og literal typer i TypeScript gir fleksibilitet i definisjonen av variable
 
 [TypeScript Union and Literal Types](https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html)  
 [Practical TypeScript: Union and Intersection Types](https://dzone.com/articles/practical-typescript-union-and-intersection-types)
-
-
-## Ekstra utfordringsoppgaver:
 
 ### **Oppgave 7: Generiske Typer**
 

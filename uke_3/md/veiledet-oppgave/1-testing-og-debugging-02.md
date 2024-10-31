@@ -1,5 +1,4 @@
 ### **Oppgave 6: Snapshot Testing**
-
 **Mål:** Forstå grunnprinsippene for snapshot testing og hvordan det kan brukes for å sikre at UI ikke endres utilsiktet.
 
 **Beskrivelse:**  
@@ -71,14 +70,41 @@ Kjør deretter testen ved å kjøre følgende kommando i terminalen:
 npm test
 ```
 
+#### **Hvordan jobber man vanligvis med snapshot testing?**
+
+Når du kjører testen for første gang, vil Jest opprette en snapshot-fil som inneholder JSON-representasjonen av `EducationHistory`-komponenten. Denne filen lagres i en mappe kalt `__snapshots__`.
+
+Hvis du gjør endringer i `EducationHistory`-komponenten, vil snapshot-testen feile hvis den nye outputen ikke matcher den lagrede snapshoten. Dette gir deg en mulighet til å gjennomgå endringene og bekrefte at de er forventet.
+
+#### **Hvordan feiler testene ved endringer i komponenten?**
+
+La oss si at du endrer `EducationHistory`-komponenten ved å legge til en ny `<div>`:
+
+```javascript
+const EducationHistory = () => (
+  <div>
+    <h1>Education History</h1>
+    <div>New content</div>
+  </div>
+);
+```
+
+Når du kjører testen igjen, vil Jest rapportere en feil fordi den nye outputen ikke matcher den lagrede snapshoten.
+
+#### **Hvordan akseptere nye snapshots etter gjennomgang?**
+
+Hvis du har gjennomgått endringene og bekreftet at de er korrekte, kan du oppdatere snapshotene ved å kjøre følgende kommando:
+
+```bash
+npm test -- -u
+```
+
+Dette vil oppdatere de lagrede snapshotene med den nye outputen fra komponenten.
+
 </details>
 
 > [!TIP]
 > Du kan også bruke `npm test -- --watch` for å kjøre testene kontinuerlig mens du utvikler.
-
-#### **Hva skjer når testen kjører?**
-
-Når du kjører testen for første gang, vil Jest opprette en snapshot-fil som inneholder JSON-representasjonen av `EducationHistory`-komponenten. Denne filen lagres i en mappe kalt `__snapshots__`.
 
 #### **Hvorfor er snapshot testing nyttig?**
 
@@ -87,40 +113,3 @@ Snapshot testing er nyttig fordi det lar oss fange utilsiktede endringer i UI-ko
 #### **Oppsummering**
 
 Med snapshot testing kan vi sikre at komponentens output ikke endres utilsiktet over tid. Dette er spesielt nyttig i store prosjekter hvor mange utviklere jobber på samme kodebase, da det hjelper med å opprettholde konsistens i UI-komponentene.
-
-### **Feilsøkingsoppgave: Finn Feilen i Snapshot Testen**
-
-**Mål:** Lære å identifisere og rette feil i snapshot tester.
-
-**Beskrivelse:**  
-I denne oppgaven skal du finne og rette en feil i en snapshot-test for `EducationHistory`-komponenten. Koden nedenfor inneholder en feil som gjør at snapshot-testen feiler. Din oppgave er å finne og rette feilen slik at testen kjører korrekt.
-
-```javascript
-import renderer from 'react-test-renderer';
-import EducationHistory from './EducationHistory';
-
-test('EducationHistory component renders correctly', () => {
-  const tree = renderer.create(<EducationHistory />).toJSON();
-  expect(tree).toMatchSnapshot();
-});
-```
-
-<details><summary>Løsning</summary>
-
-Feilen i koden ligger i importeringen av `EducationHistory`-komponenten. Sørg for at filbanen til `EducationHistory` er korrekt. Hvis komponenten ligger i en annen mappe, må du oppdatere importbanen.
-
-For eksempel, hvis `EducationHistory`-komponenten ligger i en undermappe kalt `components`, bør importen se slik ut:
-
-```javascript
-import renderer from 'react-test-renderer';
-import EducationHistory from './components/EducationHistory';
-
-test('EducationHistory component renders correctly', () => {
-  const tree = renderer.create(<EducationHistory />).toJSON();
-  expect(tree).toMatchSnapshot();
-});
-```
-
-Ved å rette filbanen til `EducationHistory`-komponenten, vil snapshot-testen kjøre korrekt og sammenligne komponentens output med den lagrede snapshoten.
-
-</details>
