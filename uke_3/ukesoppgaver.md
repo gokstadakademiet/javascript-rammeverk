@@ -6,8 +6,10 @@
 **Mål:** Introduser logging for å spore hendelser i applikasjonen.
 
 **Beskrivelse:**  
-Introduser `console.log()`-utsagn i CV-applikasjonen din for å spore verdien av variabler på viktige tidspunkter, for eksempel når brukeren legger til eller sletter en erfaring eller ferdighet.  
+Introduser `console.log()`-utsagn i CV-applikasjonen din for å spore verdien av variabler på viktige tidspunkter, for eksempel når brukeren legger til eller sletter en erfaring eller ferdighet. 
+ 
 **Eksempel:** Når en bruker prøver å legge til en ny ferdighet i CV-en sin, logger du tidspunktet og selve ferdigheten for å bekrefte at den blir lagt til som forventet.  
+
 [Se et eksempel her](https://developer.mozilla.org/en-US/docs/Web/API/Console/log)
 
 <details><summary>Løsning</summary>
@@ -37,8 +39,11 @@ Ved å logge tidspunktet og ferdigheten, kan vi bekrefte at ferdigheten blir lag
 **Mål:** Test funksjoner som hjelper med å formatere data for CV-appen.
 
 **Beskrivelse:**  
+
 Tenk deg at du har en funksjon som formaterer telefonnummeret for CV-en. Den skal sørge for at alle telefonnumre har en bestemt format, for eksempel +47-12345678.  
+
 Skriv en Jest-test for å bekrefte at funksjonen riktig formaterer ulike varianter av telefonnumre til ønsket format.  
+
 [Link: Telefonnummer formatering med Jest](https://jestjs.io/docs/getting-started)
 
 
@@ -81,8 +86,11 @@ Med Jest, kan vi enkelt skrive tester for funksjoner som `formatPhone` for å si
 **Mål:** Test funksjoner som legger til eller fjerner ferdigheter fra CV-en.
 
 **Beskrivelse:**  
+
 I CV-appen kan brukere legge til ferdigheter. Tenk deg at du har en funksjon som tar en ferdighet og legger den til en liste.  
+
 Skriv en Jest-test for å sjekke at når en ferdighet legges til, er den faktisk lagt til i listen. Du bør også teste hva som skjer hvis brukeren prøver å legge til en tom ferdighet eller en ferdighet som allerede er på listen.  
+
 [Link: Teste arrays og iterables med Jest](https://jestjs.io/docs/tutorial-async)
 
 <details><summary>Løsning</summary>
@@ -126,8 +134,10 @@ Med Jest, kan vi skrive tester for funksjoner som legger til eller fjerner ferdi
 **Mål:** Bli kjent med hvordan du kan bruke Jest for å teste interaktive aspekter av CV-appen.
 
 **Beskrivelse:**  
+
 Tenk deg at du har en knapp i CV-appen som, når den blir klikket, åpner et vindu eller en modal der brukere kan redigere sin erfaring.  
 Skriv en Jest-test som simulerer et klikk på denne knappen og bekrefter at redigeringsvinduet faktisk åpnes.  
+
 [Link: Simuler events med Jest og @testing-library/react](https://testing-library.com/docs/dom-testing-library/api-events/)
 
 <details><summary>Løsning</summary>
@@ -254,13 +264,17 @@ test('does not add a null item to the list', () => {
 ```
 
 
-### **Oppgave 6: Snapshot Testing**
 
+### **Oppgave 6: Snapshot Testing**
 **Mål:** Forstå grunnprinsippene for snapshot testing og hvordan det kan brukes for å sikre at UI ikke endres utilsiktet.
 
 **Beskrivelse:**  
+
 I CV-appen, tenk deg at du har en komponent som viser brukerens utdanningshistorikk. Vi skal skrive en Jest snapshot-test for denne komponenten for å sikre at den ikke endres utilsiktet i fremtidige oppdateringer av koden.  
+
 [Link: Snapshot Testing med Jest](https://jestjs.io/docs/snapshot-testing)
+
+<details><summary>Løsning</summary>
 
 #### **Steg 1: Installere nødvendige avhengigheter**
 
@@ -270,14 +284,11 @@ Før vi kan skrive snapshot-tester, må vi sørge for at vi har installert Jest 
 npm install --save-dev jest react-test-renderer
 ```
 
-> [!IMPORTANT]  
-> Sørg for at du kjører kommandoene i rotmappen til prosjektet ditt for å unngå installasjonsproblemer.
+**Sørg for at du kjører kommandoene i rotmappen til prosjektet ditt for å unngå installasjonsproblemer.**
 
 #### **Steg 2: Opprette Snapshot Test**
 
 Nå som vi har installert nødvendige avhengigheter, kan vi opprette en snapshot-test for `EducationHistory`-komponenten. Lag en ny fil, for eksempel `EducationHistory.test.js`, og legg til følgende kode:
-
-<details><summary>Se full kode</summary>
 
 ```javascript
 import renderer from 'react-test-renderer';
@@ -289,15 +300,15 @@ test('EducationHistory component renders correctly', () => {
 });
 ```
 
-</details>
-
 #### **Forklaring av koden:**
 
 1. **Importere nødvendige moduler:**
+
    ```javascript
    import renderer from 'react-test-renderer';
    import EducationHistory from './EducationHistory';
    ```
+
    Vi importerer `react-test-renderer` for å kunne lage en snapshot av komponenten, og `EducationHistory`-komponenten som vi skal teste.
 
 2. **Opprette snapshot-testen:**
@@ -309,9 +320,6 @@ test('EducationHistory component renders correctly', () => {
    ```
    - `renderer.create(<EducationHistory />).toJSON();` lager en JSON-representasjon av `EducationHistory`-komponenten.
    - `expect(tree).toMatchSnapshot();` sammenligner den genererte JSON-representasjonen med en tidligere lagret snapshot. Hvis det ikke finnes en tidligere snapshot, vil Jest opprette en ny.
-
-> [!NOTE]  
-> Sørg for at komponenten `EducationHistory` er korrekt importert og at filbanen er riktig, ellers vil testen feile.
 
 #### **Steg 3: Kjøring av testen**
 
@@ -329,15 +337,41 @@ Kjør deretter testen ved å kjøre følgende kommando i terminalen:
 npm test
 ```
 
-> [!TIP]
-> Du kan også bruke `npm test -- --watch` for å kjøre testene kontinuerlig mens du utvikler.
-
-#### **Hva skjer når testen kjører?**
+#### **Hvordan jobber man vanligvis med snapshot testing?**
 
 Når du kjører testen for første gang, vil Jest opprette en snapshot-fil som inneholder JSON-representasjonen av `EducationHistory`-komponenten. Denne filen lagres i en mappe kalt `__snapshots__`.
 
-> [!CAUTION]  
-> Endringer i komponentens struktur eller utseende vil føre til at snapshot-testen feiler. Dette er en indikasjon på at du bør gjennomgå endringene nøye.
+Hvis du gjør endringer i `EducationHistory`-komponenten, vil snapshot-testen feile hvis den nye outputen ikke matcher den lagrede snapshoten. Dette gir deg en mulighet til å gjennomgå endringene og bekrefte at de er forventet.
+
+#### **Hvordan feiler testene ved endringer i komponenten?**
+
+La oss si at du endrer `EducationHistory`-komponenten ved å legge til en ny `<div>`:
+
+```javascript
+const EducationHistory = () => (
+  <div>
+    <h1>Education History</h1>
+    <div>New content</div>
+  </div>
+);
+```
+
+Når du kjører testen igjen, vil Jest rapportere en feil fordi den nye outputen ikke matcher den lagrede snapshoten.
+
+#### **Hvordan akseptere nye snapshots etter gjennomgang?**
+
+Hvis du har gjennomgått endringene og bekreftet at de er korrekte, kan du oppdatere snapshotene ved å kjøre følgende kommando:
+
+```bash
+npm test -- -u
+```
+
+Dette vil oppdatere de lagrede snapshotene med den nye outputen fra komponenten.
+
+</details>
+
+> [!TIP]
+> Du kan også bruke `npm test -- --watch` for å kjøre testene kontinuerlig mens du utvikler.
 
 #### **Hvorfor er snapshot testing nyttig?**
 
@@ -346,49 +380,6 @@ Snapshot testing er nyttig fordi det lar oss fange utilsiktede endringer i UI-ko
 #### **Oppsummering**
 
 Med snapshot testing kan vi sikre at komponentens output ikke endres utilsiktet over tid. Dette er spesielt nyttig i store prosjekter hvor mange utviklere jobber på samme kodebase, da det hjelper med å opprettholde konsistens i UI-komponentene.
-
-### **Feilsøkingsoppgave: Finn Feilen i Snapshot Testen**
-
-**Mål:** Lære å identifisere og rette feil i snapshot tester.
-
-**Beskrivelse:**  
-I denne oppgaven skal du finne og rette en feil i en snapshot-test for `EducationHistory`-komponenten. Koden nedenfor inneholder en feil som gjør at snapshot-testen feiler. Din oppgave er å finne og rette feilen slik at testen kjører korrekt.
-
-<details><summary>Se full kode</summary>
-
-```javascript
-import renderer from 'react-test-renderer';
-import EducationHistory from './EducationHistory';
-
-test('EducationHistory component renders correctly', () => {
-  const tree = renderer.create(<EducationHistory />).toJSON();
-  expect(tree).toMatchSnapshot();
-});
-```
-
-</details>
-
-#### **Løsningsforslag:**
-
-Feilen i koden ligger i importeringen av `EducationHistory`-komponenten. Sørg for at filbanen til `EducationHistory` er korrekt. Hvis komponenten ligger i en annen mappe, må du oppdatere importbanen.
-
-For eksempel, hvis `EducationHistory`-komponenten ligger i en undermappe kalt `components`, bør importen se slik ut:
-
-<details><summary>Se full kode</summary>
-
-```javascript
-import renderer from 'react-test-renderer';
-import EducationHistory from './components/EducationHistory';
-
-test('EducationHistory component renders correctly', () => {
-  const tree = renderer.create(<EducationHistory />).toJSON();
-  expect(tree).toMatchSnapshot();
-});
-```
-
-</details>
-
-Ved å rette filbanen til `EducationHistory`-komponenten, vil snapshot-testen kjøre korrekt og sammenligne komponentens output med den lagrede snapshoten.
 
 
 
@@ -406,84 +397,111 @@ Opprett en React-komponent `Profile` som viser grunnleggende brukerinformasjon. 
 
 **Link:** [PropTypes documentation](https://reactjs.org/docs/typechecking-with-proptypes.html)
 
-**Trinnvis Løsning:**
+<details><summary>Løsning</summary>
 
 1. **Opprett en ny React-komponent kalt `Profile`:**  
-   Begynn med å opprette en ny fil kalt `Profile.js` i prosjektets komponentmappe. Dette er hvor vi skal skrive vår React-komponent.
+  Begynn med å opprette en ny fil kalt `Profile.jsx` i prosjektets komponentmappe. Dette er hvor vi skal skrive vår React-komponent.
 
 2. **Skriv komponenten:**  
-   Innenfor `Profile.js`, importer React og PropTypes. Dette er nødvendig for å kunne bruke React og PropTypes i vår komponent.
+  Innenfor `Profile.jsx`, importer React og PropTypes. Dette er nødvendig for å kunne bruke React og PropTypes i vår komponent.
 
-   <details><summary>Se full kode</summary>
-   
-   ```javascript
-   import React from 'react';
-   import PropTypes from 'prop-types';
-   ```
+  ```javascript
+  import React from 'react';
+  import PropTypes from 'prop-types';
+  ```
 
-   Deretter, opprett `Profile`-komponenten. En komponent i React er en funksjon som returnerer JSX, som er en syntaksutvidelse for JavaScript som ligner på HTML.
+  Deretter, opprett `Profile`-komponenten. En komponent i React er en funksjon som returnerer JSX, som er en syntaksutvidelse for JavaScript som ligner på HTML.
 
-   <details><summary>Se full kode</summary>
-   
-   ```javascript
-   const Profile = ({ name, age, experience }) => {
-     return (
-       <div>
-         <h2>{name}</h2>
-         <p>Age: {age}</p>
-         <ul>
-           {experience.map((exp, index) => (
-             <li key={index}>
-               {exp.title} - {exp.years} years
-             </li>
-           ))}
-         </ul>
-       </div>
-     );
-   };
-   ```
+  ```javascript
+  const Profile = ({ name, age, experience }) => {
+    return (
+     <div>
+      <h2>{name}</h2>
+      <p>Age: {age}</p>
+      <ul>
+        {experience.map((exp, index) => (
+         <li key={index}>
+          {exp.title} - {exp.years} years
+         </li>
+        ))}
+      </ul>
+     </div>
+    );
+  };
+  ```
 
-   I denne komponenten tar vi inn `name`, `age`, og `experience` som props og viser dem i en enkel HTML-struktur. `experience` er en array, så vi bruker `map`-funksjonen for å iterere over hvert element og vise det i en liste.
+  I denne komponenten tar vi inn `name`, `age`, og `experience` som props og viser dem i en enkel HTML-struktur. `experience` er en array, så vi bruker `map`-funksjonen for å iterere over hvert element og vise det i en liste.
 
 3. **Legg til PropTypes:**  
-   Under komponenten, definer PropTypes for `Profile`. PropTypes er et bibliotek som lar oss spesifisere hvilke typer props en komponent skal motta. Dette hjelper med å fange feil tidlig i utviklingsprosessen.
+  Under komponenten, definer PropTypes for `Profile`. PropTypes er et bibliotek som lar oss spesifisere hvilke typer props en komponent skal motta. Dette hjelper med å fange feil tidlig i utviklingsprosessen.
 
-   <details><summary>Se full kode</summary>
-   
-   ```javascript
-   Profile.propTypes = {
-     name: PropTypes.string.isRequired,
-     age: PropTypes.number.isRequired,
-     experience: PropTypes.arrayOf(
-       PropTypes.shape({
-         title: PropTypes.string.isRequired,
-         years: PropTypes.number.isRequired,
-       })
-     ).isRequired,
-   };
-   ```
+  ```javascript
+  Profile.propTypes = {
+    name: PropTypes.string.isRequired,
+    age: PropTypes.number.isRequired,
+    experience: PropTypes.arrayOf(
+     PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      years: PropTypes.number.isRequired,
+     })
+    ).isRequired,
+  };
+  ```
 
-> [!IMPORTANT]  
-> Her spesifiserer vi at `name` skal være en streng, `age` skal være et nummer, og `experience` skal være en array av objekter. Hvert objekt i `experience`-arrayen skal ha en `title` som er en streng og `years` som er et nummer. `isRequired` betyr at disse propsene er obligatoriske.
+  **Her spesifiserer vi at `name` skal være en streng, `age` skal være et nummer, og `experience` skal være en array av objekter. Hvert objekt i `experience`-arrayen skal ha en `title` som er en streng og `years` som er et nummer. `isRequired` betyr at disse propsene er obligatoriske.**
 
-   Deretter, eksporter `Profile`-komponenten. Dette gjør at vi kan importere og bruke `Profile`-komponenten i andre deler av vår applikasjon.
+  Deretter, eksporter `Profile`-komponenten. Dette gjør at vi kan importere og bruke `Profile`-komponenten i andre deler av vår applikasjon.
 
-   <details><summary>Se full kode</summary>
-   
-   ```javascript
-   export default Profile;
-   ```
+  ```javascript
+  export default Profile;
+  ```
+
+4. **Demonstrer bruk av PropTypes i praksis:**  
+  For å demonstrere hvordan PropTypes fungerer, kan vi opprette en annen komponent som bruker `Profile` og med vilje utelate en av de nødvendige propsene. Dette vil utløse en advarsel i konsollen.
+
+  ```javascript
+  import React from 'react';
+  import Profile from './Profile';
+
+  const App = () => {
+    const user = {
+     name: 'John Doe',
+     // age is missing to demonstrate PropTypes warning
+     experience: [
+      { title: 'Developer', years: 5 },
+      { title: 'Designer', years: 3 },
+     ],
+    };
+
+    return (
+     <div>
+      <h1>User Profile</h1>
+      <Profile name={user.name} experience={user.experience} />
+     </div>
+    );
+  };
+
+  export default App;
+  ```
+
+  Når `App`-komponenten rendres, vil det mangle `age`-prop for `Profile`. Åpne konsollen i Chrome (høyreklikk på siden, velg "Inspect", og gå til "Console"-fanen) for å se advarselen generert av PropTypes.
+
+  ```plaintext
+  Warning: Failed prop type: The prop `age` is marked as required in `Profile`, but its value is `undefined`.
+  ```
+
+  Denne advarselen hjelper utviklere med å identifisere og rette feil tidlig i utviklingsprosessen.
 
 **Forklaring:**
 
 PropTypes gir typekontroll for props som sendes til en React-komponent. Dette bidrar til å fange feil tidligere i utviklingsprosessen. I denne oppgaven, ved å bruke PropTypes, sikrer vi at `Profile`-komponenten mottar riktige typer for `name`, `age` og `experience`. Dette bidrar til å forbedre robustheten og forutsigbarheten av komponenten.
 
-> [!TIP]
-> For `experience`, har vi brukt `arrayOf` kombinert med `shape` for å spesifisere at det er en array av objekter, hvor hvert objekt har bestemte nøkler med bestemte typer.
+**For `experience`, har vi brukt `arrayOf` kombinert med `shape` for å spesifisere at det er en array av objekter, hvor hvert objekt har bestemte nøkler med bestemte typer.**
+
+</details>
 
 [React PropTypes and type checking](https://reactjs.org/docs/typechecking-with-proptypes.html)  
 [PropTypes on GitHub](https://github.com/facebook/prop-types)
-
 
 ### **Oppgave 2: Integrering av TypeScript i et eksisterende React-prosjekt**
 
@@ -494,13 +512,11 @@ Ta et eksisterende React JS-prosjekt for CV-applikasjonen og integrer TypeScript
 
 **Link:** [Adding TypeScript to an Existing Project](https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html)
 
-**Trinnvis Løsning:**
+<details><summary>Løsning</summary>
 
 1. **Installer TypeScript og nødvendige avhengigheter:**  
    I terminalen, kjør følgende kommandoer. Dette vil installere TypeScript og typer for Node, React, React DOM, og Jest.
 
-   <details><summary>Se full kode</summary>
-   
    ```
    npm install --save typescript @types/node @types/react @types/react-dom @types/jest
    ```
@@ -508,8 +524,6 @@ Ta et eksisterende React JS-prosjekt for CV-applikasjonen og integrer TypeScript
 2. **Initialiser en TypeScript konfigurasjonsfil:**  
    Kjør følgende kommando. Dette vil opprette en `tsconfig.json` fil i rotkatalogen av prosjektet, som brukes til å konfigurere TypeScript-kompilatoren.
 
-   <details><summary>Se full kode</summary>
-   
    ```
    npx tsc --init
    ```
@@ -517,8 +531,6 @@ Ta et eksisterende React JS-prosjekt for CV-applikasjonen og integrer TypeScript
 3. **Konfigurer tsconfig for React:**  
    Åpne `tsconfig.json` og gjør følgende endringer. Dette konfigurerer TypeScript til å fungere med React og spesifiserer hvilke filer som skal inkluderes og ekskluderes.
 
-   <details><summary>Se full kode</summary>
-   
    ```json
    {
      "compilerOptions": {
@@ -543,25 +555,18 @@ Ta et eksisterende React JS-prosjekt for CV-applikasjonen og integrer TypeScript
    }
    ```
 
-> [!NOTE]  
-> Sørg for at `include` og `exclude` feltene er riktig konfigurert for å inkludere alle TypeScript-filer i `src`-mappen og ekskludere `node_modules`.
-
 4. **Endre filendelser fra `.js` til `.tsx` for React-komponenter:**  
    Dette signaliserer til TypeScript kompileren at filene inneholder JSX. JSX er en syntaksutvidelse for JavaScript som ligner på HTML og brukes i React.
 
 5. **Migrer en React-komponent til TypeScript:**  
    Som et eksempel, la oss ta `Profile`-komponenten fra Oppgave 1. Endre filendelsen til `.tsx` og deretter importer `React` som:
 
-   <details><summary>Se full kode</summary>
-   
    ```typescript
    import React, { FC } from 'react';
    ```
 
    Deretter, definer prop-typer for `Profile`. I TypeScript bruker vi grensesnitt (interfaces) for å definere typer for props.
 
-   <details><summary>Se full kode</summary>
-   
    ```typescript
    interface ProfileProps {
      name: string;
@@ -595,10 +600,9 @@ Ta et eksisterende React JS-prosjekt for CV-applikasjonen og integrer TypeScript
 
 Å legge til TypeScript i et eksisterende React JS-prosjekt gir sterkere type sikkerhet og kan forbedre kodekvaliteten. Den første delen av denne oppgaven fokuserer på oppsett og installasjon av nødvendige avhengigheter. `tsconfig.json` konfigurerer hvordan TypeScript kompileren skal fungere. 
 
-> [!CAUTION]
-> Sørg for å teste applikasjonen grundig etter å ha migrert til TypeScript for å sikre at ingen funksjonalitet er brutt.
-
 De siste trinnene demonstrerer en enkel migrasjon av en React-komponent til TypeScript ved å bruke grensesnitt for props og `FC` (Functional Component) fra `React`.
+
+</details>
 
 [Adding TypeScript to an Existing Project](https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html)  
 [TypeScript and React](https://fettblog.eu/typescript-react/)
@@ -613,49 +617,6 @@ I denne oppgaven skal du finne og rette feil i en gitt React-komponent. Koden ne
 **Link:** [React Documentation](https://reactjs.org/docs/getting-started.html)
 
 **Kode:**
-
-<details><summary>Se full kode</summary>
-
-```javascript
-import React from 'react';
-
-const UserList = ({ users }) => {
-  return (
-    <div>
-      <h1>User List</h1>
-      <ul>
-        {users.map(user => (
-          <li key={user.id}>
-            {user.name} - {user.age} years old
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
-
-UserList.propTypes = {
-  users: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      age: PropTypes.number.isRequired,
-    })
-  ).isRequired,
-};
-
-export default UserList;
-```
-
-**Forklaring:**
-
-Koden ovenfor skal vise en liste over brukere med navn og alder. Hver bruker har en unik `id`, et `name`, og en `age`. Komponentens props er typekontrollert med PropTypes for å sikre at `users` er en array av objekter med de nødvendige feltene.
-
-**Løsningsforslag:**
-
-Feilen i koden er at `PropTypes` ikke er importert, noe som vil føre til en feil når komponenten prøver å bruke `PropTypes` for typekontroll. For å rette feilen, må vi importere `PropTypes` fra `prop-types`-biblioteket.
-
-<details><summary>Se full kode</summary>
 
 ```javascript
 import React from 'react';
@@ -689,11 +650,43 @@ UserList.propTypes = {
 export default UserList;
 ```
 
-Ved å legge til `import PropTypes from 'prop-types';` øverst i filen, sikrer vi at `PropTypes` er tilgjengelig for komponenten, og typekontrollen vil fungere som forventet.
+**Initial list of users with errors:**
+
+```javascript
+const users = [
+  { id: "1", name: 'Alice', age: 25 }, // Incorrect type for id
+  { id: "2", name: 'Bob' }, // Missing age prop and incorrect type for id
+  { id: "3", name: 'Charlie', age: 'thirty' } // Incorrect type for age and id
+];
+```
+
+<details><summary>Løsning</summary>
+
+Feilene i koden er:
+1. `id`-propen er definert som et nummer, men sendes inn som en streng.
+2. Brukeren Bob mangler `age`-prop.
+3. Brukeren Charlie har `age`-prop med feil type (streng i stedet for nummer).
+
+For å rette feilene, må vi oppdatere `users`-arrayen slik at alle brukere har riktige props og typer.
+
+```javascript
+const users = [
+  { id: 1, name: 'Alice', age: 25 }, // Corrected type for id
+  { id: 2, name: 'Bob', age: 30 }, // Added missing age prop and corrected type for id
+  { id: 3, name: 'Charlie', age: 30 } // Corrected type for age and id
+];
+```
+
+Ved å rette typen for `id`, legge til den manglende `age`-propen for Bob, og rette typen for Charlie, sikrer vi at `UserList`-komponenten mottar riktige props og typer, og typekontrollen vil fungere som forventet.
+
+</details>
 
 
 
-### **Oppgave 5: Feilsøking i TypeScript**
+
+
+
+### **Oppgave 4: Feilsøking i TypeScript**
 
 **Mål:** Lære å identifisere og rette opp feil i TypeScript-kode.
 
@@ -702,136 +695,160 @@ I denne oppgaven skal du feilsøke en `Profile`-komponent som er skrevet i TypeS
 
 **Link:** [TypeScript Error Handling](https://www.typescriptlang.org/docs/handbook/basic-types.html)
 
-1. **Åpne `Profile`-komponenten:**  
-   Gå til filen hvor `Profile`-komponenten ligger. Filen skal ha endelsen `.tsx`.
-
 > [!NOTE]  
-> I TypeScript, bruker vi `.tsx`-filer for React-komponenter som inneholder JSX. Dette gjør at vi kan dra nytte av TypeScript sine typer samtidig som vi skriver JSX-syntaks.
+> Hvis du ønsker å teste dette loktalt, er det viktig at filen har endingen `.tsx`, og ikke `.jsx`.
 
-2. **Se gjennom koden og identifiser feilen:**  
-   Her er koden for `Profile`-komponenten:
+Her er koden for `Profile`-komponenten:
 
-   <details><summary>Se full kode</summary>
-   
-   ```typescript
-   import React, { FC } from 'react';
+  ```typescript
+  import React, { FC } from 'react';
 
-   interface ProfileProps {
-     name: string;
-     age: number;
-     experience: {
-       title: string;
-       years: number;
-     }[];
-   }
+  interface ProfileProps {
+    name: string;
+    age: number;
+    experience: {
+      title: string;
+      years: number;
+    }[];
+  }
 
-   const Profile: FC<ProfileProps> = ({ name, age, experience }) => {
-     return (
-       <div>
-         <h1>{name}</h1>
-         <p>Age: {age}</p>
-         <ul>
-           {experience.map((exp, index) => (
-             <li key={index}>
-               {exp.title} - {exp.years} years
-             </li>
-           ))}
-         </ul>
-       </div>
-     );
-   };
+  const Profile: FC<ProfileProps> = ({ name, age, experience }) => {
+    return (
+      <div>
+        <h1>{name}</h1>
+        <p>Age: {age}</p>
+        <ul>
+          {experience.map((exp, index) => (
+            <li key={index}>
+              {exp.title} - {exp.years} years
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  };
 
-   export default Profile;
-   ```
+  export default Profile;
 
-   **Forklaring:**  
-   Koden ovenfor skal vise brukerens navn, alder og arbeidserfaring. Arbeidserfaringen er en liste av objekter som inneholder `title` og `years`.
+  // Usage example with incorrect props
+  const App = () => {
+    return (
+      <Profile
+        name="John Doe"
+        age="30" // Error: age should be a number
+        experience={[
+          { title: "Developer", years: "5" }, // Error: years should be a number
+          { title: "Manager", years: 3 }
+        ]}
+      />
+    );
+  };
 
-3. **Finn og rett opp feilen:**  
-   Identifiser feilen i koden og rett den opp. 
+  export default App;
+  ```
+  
+  <details><summary>Løsning</summary>
 
-**Løsningsforslag:**  
-Feilen i koden er at `experience`-prop ikke blir sendt inn i riktig format. Her er den korrigerte koden:
+  Feilen i koden er at `age`- og `years`-propene ikke blir sendt inn i riktig format. Her er den korrigerte koden:
 
-<details><summary>Se full kode</summary>
+  ```typescript
+  import React, { FC } from 'react';
 
-```typescript
-import React, { FC } from 'react';
+  interface ProfileProps {
+    name: string;
+    age: number;
+    experience: {
+      title: string;
+      years: number;
+    }[];
+  }
 
-interface ProfileProps {
-  name: string;
-  age: number;
-  experience: {
-    title: string;
-    years: number;
-  }[];
-}
+  const Profile: FC<ProfileProps> = ({ name, age, experience }) => {
+    return (
+      <div>
+        <h1>{name}</h1>
+        <p>Age: {age}</p>
+        <ul>
+          {experience.map((exp, index) => (
+            <li key={index}>
+              {exp.title} - {exp.years} years
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  };
 
-const Profile: FC<ProfileProps> = ({ name, age, experience }) => {
-  return (
-    <div>
-      <h1>{name}</h1>
-      <p>Age: {age}</p>
-      <ul>
-        {experience.map((exp, index) => (
-          <li key={index}>
-            {exp.title} - {exp.years} years
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
+  export default Profile;
 
-export default Profile;
-```
+  // Usage example with correct props
+  const App = () => {
+    return (
+      <Profile
+        name="John Doe"
+        age={30} // Corrected: age is now a number
+        experience={[
+          { title: "Developer", years: 5 }, // Corrected: years is now a number
+          { title: "Manager", years: 3 }
+        ]}
+      />
+    );
+  };
 
+  export default App;
+  ```
 
-**Forklaring:**  
-Etter å ha rettet opp feilen, vil `Profile`-komponenten nå vise brukerens navn, alder og arbeidserfaring korrekt. Sørg for at dataene som sendes inn som props samsvarer med `ProfileProps`-grensesnittet.
+  **Forklaring:**  
+  Etter å ha rettet opp feilen, vil `Profile`-komponenten nå vise brukerens navn, alder og arbeidserfaring korrekt. Sørg for at dataene som sendes inn som props samsvarer med `ProfileProps`-grensesnittet.
 
-</details>
-
-</br>
-
-**Oppsummering:**
-
-Feilsøking er en viktig ferdighet i utvikling, spesielt når du jobber med TypeScript og React. Ved å identifisere og rette opp feil i koden, kan du sikre at komponentene dine fungerer som forventet og gir en god brukeropplevelse. TypeScript hjelper med å fange opp mange feil tidlig i utviklingsprosessen, noe som kan spare tid og redusere frustrasjon.
-
-[TypeScript Error Handling](https://www.typescriptlang.org/docs/handbook/basic-types.html)  
-[React and TypeScript: Props](https://fettblog.eu/typescript-react/props/)
+  </details>
 
 
 
 ### **Oppgave 5: Bruk av Type Assertions**
-
 **Mål:** Forstå hvordan og når du skal bruke type assertions i TypeScript.
 
 **Beskrivelse:**  
 I CV-applikasjonen, opprett en hjelpefunksjon `parseUserData` som tar en streng (JSON format) og konverterer den til et objekt. Bruk type assertions for å forsikre TypeScript at den returnerte verdien er av en spesifikk type (f.eks. `UserProfile` type).
 
+Bruk for eksempel følgende grensesnitt og JSON streng:
+
+```typescript
+interface UserProfile {
+       name: string;
+       age: number;
+       experience: { title: string; years: number }[];
+    }
+```
+
+`'{"name":"John Doe","age":30,"experience":[{"title":"Developer","years":5},{"title":"Manager","years":3}]}'`
+
 **Link:** [TypeScript Type Assertions](https://www.typescriptlang.org/docs/handbook/basic-types.html#type-assertions)
 
-**Trinnvis Løsning:**
+<details><summary>Løsning</summary>
 
 1. **Opprett en ny fil:**  
-   Lag en ny fil kalt `UserProfile.ts`.
+    Lag en ny fil kalt `UserProfile.ts`.
 
 2. **Definer et grensesnitt for brukerprofildata:**  
 
-   ```typescript
-   interface UserProfile {
-     name: string;
-     age: number;
-     experience: { title: string; years: number }[];
-   }
-   ```
+    ```typescript
+    interface UserProfile {
+       name: string;
+       age: number;
+       experience: { title: string; years: number }[];
+    }
+    ```
 
 3. **Opprett funksjonen `parseUserData`:**  
 
-   ```typescript
-   const parseUserData = (jsonData: string): UserProfile => JSON.parse(jsonData) as UserProfile;
-   ```
+    ```typescript
+    const parseUserData = (jsonData: string): UserProfile => JSON.parse(jsonData) as UserProfile;
+
+    const jsonData = `'{"name":"John Doe","age":30,"experience":[{"title":"Developer","years":5},{"title":"Manager","years":3}]}'`;
+
+    const parsedUserData: UserProfile = parseUserData(jsonData);
+    ```
 
 **Forklaring:**
 
@@ -841,9 +858,10 @@ Dette er nyttig når vi vet hvilken form dataen vil ha, selv om TypeScript ikke 
 
 Merk: Mens type assertions kan være kraftige, bør de brukes varsomt. Å forsikre TypeScript feilaktig om en types form kan føre til uventede feil som er vanskelige å feilsøke.
 
+</details>
+
 [TypeScript Type Assertions](https://www.typescriptlang.org/docs/handbook/basic-types.html#type-assertions)  
 [Assert function argument is a certain type in TypeScript](https://stackoverflow.com/questions/40081332/assert-function-argument-is-a-certain-type-in-typescript)
-
 
 ### **Oppgave 6: Union Typer og Literal Typer**
 
@@ -854,7 +872,7 @@ Lag en komponent `Filter` i CV-applikasjonen som lar brukere filtrere jobberfari
 
 **Link:** [TypeScript Union and Literal Types](https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html)
 
-**Trinnvis Løsning:**
+<details><summary>Løsning</summary>
 
 1. **Opprett en ny fil:**  
    Lag en ny fil kalt `Filter.tsx`.
@@ -863,7 +881,7 @@ Lag en komponent `Filter` i CV-applikasjonen som lar brukere filtrere jobberfari
 
    ```typescript
    type JobTitle = 'Developer' | 'Designer' | 'Manager';
-   type FilterType = string | number;
+   type FilterType = JobTitle | number;
    ```
 
 3. **Opprett Filter-komponenten:**  
@@ -871,34 +889,60 @@ Lag en komponent `Filter` i CV-applikasjonen som lar brukere filtrere jobberfari
    ```typescript
    interface FilterProps {
      filterBy: FilterType;
+     experiences: { jobTitle: JobTitle; year: number }[];
    }
 
-   const Filter: React.FC<FilterProps> = ({ filterBy }) => {
-     if (typeof filterBy === 'string') {
-       // Filtrer etter jobbtittel
-       return <div>Filtering by job title: {filterBy}</div>;
-     } else if (typeof filterBy === 'number') {
-       // Filtrer etter årstall
-       return <div>Filtering by year: {filterBy}</div>;
-     } else {
-       return null;
-     }
+   const Filter: React.FC<FilterProps> = ({ filterBy, experiences }) => {
+     const filteredExperiences = experiences.filter(experience => {
+       if (typeof filterBy === 'string') {
+         return experience.jobTitle === filterBy;
+       } else if (typeof filterBy === 'number') {
+         return experience.year === filterBy;
+       }
+       return false;
+     });
+
+     return (
+       <div>
+         {filteredExperiences.map((experience, index) => (
+           <div key={index}>
+             <p>Job Title: {experience.jobTitle}</p>
+             <p>Year: {experience.year}</p>
+           </div>
+         ))}
+       </div>
+     );
    };
+   ```
+
+4. **Eksempel på bruk:**  
+
+   ```typescript
+   const jobExperiences = [
+     { jobTitle: 'Developer', year: 2020 },
+     { jobTitle: 'Designer', year: 2019 },
+     { jobTitle: 'Manager', year: 2021 },
+   ];
+
+   // Filtrer etter jobbtittel
+   <Filter filterBy="Developer" experiences={jobExperiences} />
+
+   // Filtrer etter årstall
+   <Filter filterBy={2019} experiences={jobExperiences} />
    ```
 
 **Forklaring:**
 
-Vi starter med å definere `JobTitle` som en literal type. Dette betyr at den kan være en av tre strenger: 'Developer', 'Designer', eller 'Manager'. Vi definerer deretter `FilterType` som en union type, noe som betyr at den kan være enten en `string` eller et `number`.
+Vi starter med å definere `JobTitle` som en literal type. Dette betyr at den kan være en av tre strenger: 'Developer', 'Designer', eller 'Manager'. Vi definerer deretter `FilterType` som en union type, noe som betyr at den kan være enten en `JobTitle` eller et `number`.
 
 I `Filter`-komponenten bruker vi type-sjekker (`typeof filterBy === 'string'`) for å avgjøre hvordan vi skal filtrere, basert på om `filterBy` er en streng eller et nummer. Denne tilnærmingen utnytter kraften av TypeScript for å sørge for at koden vår er type-sikker og gir forventet oppførsel basert på hvilken type data som sendes til komponenten.
 
 Union og literal typer i TypeScript gir fleksibilitet i definisjonen av variable typer, samtidig som de gir sterk typesikkerhet.
 
+</details>
+
 [TypeScript Union and Literal Types](https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html)  
 [Practical TypeScript: Union and Intersection Types](https://dzone.com/articles/practical-typescript-union-and-intersection-types)
-
-
-## Ekstra utfordringsoppgaver:
 
 ### **Oppgave 7: Generiske Typer**
 
@@ -909,7 +953,7 @@ Lag en generisk funksjon `getDetails` som tar en array av objekter og en nøkkel
 
 **Link:** [TypeScript Handbook: Generics](https://www.typescriptlang.org/docs/handbook/generics.html)
 
-**Trinnvis Løsning:**
+<details><summary>Løsning</summary>
 
 1. **Opprett en ny fil:**  
    Lag en ny fil kalt `Utilities.ts`.
@@ -940,6 +984,8 @@ Den første generiske typen, `T`, representerer en hvilken som helst type. Den a
 Ved å kalle `getDetails` med `jobExperiences`-arrayen og nøkkelen 'jobTitle', får vi en ny array som inneholder kun jobbtitlene fra `jobExperiences`.
 
 Generiske typer tillater deg å lage fleksible funksjoner og komponenter som kan håndtere mange forskjellige datatyper samtidig som de gir type-sikkerhet.
+
+</details>
 
 [TypeScript Handbook: Generics](https://www.typescriptlang.org/docs/handbook/generics.html)  
 [Understanding TypeScript Generics](https://www.tutorialsteacher.com/typescript/typescript-generics)
