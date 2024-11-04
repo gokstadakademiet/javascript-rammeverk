@@ -42,14 +42,13 @@ Her er koden for `Profile`-komponenten:
 
   export default Profile;
 
-  // Usage example with incorrect props
   const App = () => {
     return (
       <Profile
         name="John Doe"
-        age="30" // Error: age should be a number
+        age="30"
         experience={[
-          { title: "Developer", years: "5" }, // Error: years should be a number
+          { title: "Developer", years: "5" }, 
           { title: "Manager", years: 3 }
         ]}
       />
@@ -58,7 +57,7 @@ Her er koden for `Profile`-komponenten:
 
   export default App;
   ```
-  
+
   <details><summary>Løsning</summary>
 
   Feilen i koden er at `age`- og `years`-propene ikke blir sendt inn i riktig format. Her er den korrigerte koden:

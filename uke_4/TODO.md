@@ -2,5 +2,6 @@
 
 - [x] Leseliste
 - [ ] Ukesoppgaver
-- [ ] Teams Tekst
+- [x] Teams Tekst
 - [ ] Ukens Plan
+- [ ] Lese out Outlet

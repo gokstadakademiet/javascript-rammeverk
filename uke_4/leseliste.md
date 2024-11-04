@@ -6,14 +6,19 @@ Vi oppfordrer deg til å lese gjennom disse artiklene grundig, da de vil gi deg 
 > [!TIP]  
 > Husk å ta notater mens du leser, da dette vil hjelpe deg med å huske og forstå materialet bedre.
 
-## \`React Router Dom\`
+## React Router Dom
 
 - [React Router DOM: How to handle routing in web apps](https://blog.logrocket.com/react-router-dom-tutorial-examples/)
 - [Tutorial](https://reactrouter.com/en/main/start/tutorial)
 - [Learn React Router v6 In 45 Minutes](https://www.youtube.com/watch?v=Ul3y1LXxzdU)
 - [React Router (kapittel 7)](https://www.linkedin.com/learning/react-js-essential-training-14836121/installing-react-router-v6)
+- [Mastering React Routing: A Comprehensive Guide](https://medium.com/@aysunitai/mastering-react-routing-a-comprehensive-guide-86d5ad0d5df)
 
-## \`useContext\`
+#### Avansert
+
+- [How to Build a Routing Layer in React and Why You Need It](https://semaphoreci.com/blog/routing-layer-react)
+
+## useContext
 
 - [useContext](https://react.dev/reference/react/useContext)
 - [React useContext() hook introduction 🧗‍♂️](https://www.youtube.com/watch?v=FpNfvbNYPsg)

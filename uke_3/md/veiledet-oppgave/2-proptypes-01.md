@@ -227,7 +227,7 @@ De siste trinnene demonstrerer en enkel migrasjon av en React-komponent til Type
 **Mål:** Forbedre feilsøkingsferdigheter ved å identifisere og rette feil i React-komponenter.
 
 **Beskrivelse:**  
-I denne oppgaven skal du finne og rette feil i en gitt React-komponent. Koden nedenfor er ment å vise en liste over brukere med navn og alder, men den inneholder en feil som forhindrer riktig visning. Din oppgave er å finne og rette feilen.
+I denne oppgaven skal du finne og rette feil i en gitt React-komponent. Koden nedenfor er ment å vise en liste over brukere med navn og alder, men den inneholder en feil som forhindrer riktig visning. `id` skal være en et tall, `navn` skal være en string og `age` skal være et tall. Din oppgave er å finne og rette feilen.
 
 **Link:** [React Documentation](https://reactjs.org/docs/getting-started.html)
 
@@ -265,13 +265,13 @@ UserList.propTypes = {
 export default UserList;
 ```
 
-**Initial list of users with errors:**
+**Initial list of users:**
 
 ```javascript
 const users = [
-  { id: "1", name: 'Alice', age: 25 }, // Incorrect type for id
-  { id: "2", name: 'Bob' }, // Missing age prop and incorrect type for id
-  { id: "3", name: 'Charlie', age: 'thirty' } // Incorrect type for age and id
+  { id: "1", name: 'Alice', age: 25 }, 
+  { id: "2", name: 'Bob' }, 
+  { id: "3", name: 'Charlie', age: 'thirty' } 
 ];
 ```
 
