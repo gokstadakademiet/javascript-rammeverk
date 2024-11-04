@@ -3,7 +3,7 @@
 **Beskrivelse:**  
 Lag en enkel innloggingsside. Når brukere prøver å få tilgang til den detaljerte CV-siden uten å være logget inn, skal de bli omdirigert til innloggingssiden. Etter vellykket innlogging, omdiriger brukeren tilbake til den detaljerte CV-siden.
 
-**Løsning:** 
+<details><summary>Løsning</summary> 
 
 Bruk `useNavigate` for omdirigering:
 
@@ -25,6 +25,8 @@ const CvPage = () => {
 **Forklaring:**  
 Hvis brukeren ikke er logget inn, vil de bli omdirigert til innloggingssiden ved hjelp av `useNavigate`.
 
+</details>
+
 **Link:** [React Router Redirects](https://reactrouter.com/docs/en/v6/api#usehistory)
 
 ### **Oppgave 6: 404 NotFound Side**
@@ -32,7 +34,7 @@ Hvis brukeren ikke er logget inn, vil de bli omdirigert til innloggingssiden ved
 **Beskrivelse:**  
 Legg til en 404 NotFound side i applikasjonen din. Når brukere besøker en rute som ikke finnes, skal de bli tatt til denne siden.
 
-**Løsning:** 
+<details><summary>Løsning</summary> 
 
 ```javascript
 const App = () => {
@@ -51,6 +53,8 @@ const App = () => {
 **Forklaring:**  
 Ved hjelp av en sti på `*`, vil hvilken som helst rute som ikke allerede er definert, matche `NotFound` komponenten.
 
+</details>
+
 **Link:** [Handling 404 pages with React Router](https://reactrouter.com/docs/en/v6/guides/no-match)
 
 ## Ekstra utfordringsoppgaver:
@@ -59,7 +63,7 @@ Ved hjelp av en sti på `*`, vil hvilken som helst rute som ikke allerede er def
 **Beskrivelse:**  
 Vis en breadcrumb-navigasjon på den detaljerte CV-siden basert på den gjeldende ruten. Bruk `useLocation` for å hente den nødvendige informasjonen om ruten.
 
-**Løsning:** 
+<details><summary>Løsning</summary> 
 
 ```javascript
 import { useLocation } from 'react-router-dom';
@@ -75,5 +79,6 @@ Med `useLocation`, kan vi få informasjon om den gjeldende plasseringen og bygge
 
 Husk at disse løsningsforslagene er grunnleggende eksempler. Du kan utvide og tilpasse dem basert på spesifikke krav eller forbedringer du ønsker å implementere i applikasjonen din.
 
+</details>
 
 **Link:** [React Router useLocation](https://reactrouter.com/docs/en/v6/api#uselocation)

@@ -6,7 +6,7 @@
 **Beskrivelse:**  
 Lag en `ThemeContext` som kan lagre informasjon om hvilket tema (lys eller mørk) som er valgt for applikasjonen. Bruk denne konteksten til å bytte mellom lys og mørk modus i en liten applikasjon.  
 
-**Løsning:** 
+<details><summary>Løsning</summary> 
 
 ```javascript
 import React, { createContext, useState } from 'react';
@@ -33,6 +33,8 @@ export { ThemeContext, ThemeProvider };
 **Forklaring:**
 Dette mønsteret lar deg opprette en global tilstand som kan være tilgjengelig i hvilken som helst komponent i applikasjonen ved hjelp av React Context. Ved å bruke `ThemeProvider` rundt hele appen din kan alle barna ha tilgang til temaet og funksjonaliteten for å bytte tema.
 
+</details>
+
 **Link:** [React Context](https://reactjs.org/docs/context.html)
 
 ### **Oppgave 2: Bruk av `useContext`**
@@ -40,7 +42,7 @@ Dette mønsteret lar deg opprette en global tilstand som kan være tilgjengelig 
 **Beskrivelse:**  
 Bygg videre på oppgave 1 ved å lage en `ThemeToggleButton`-komponent. Denne komponenten skal kunne bytte mellom lys og mørk modus ved å hente og sette temaet fra `ThemeContext` ved hjelp av `useContext`-hooken.   
 
-**Løsning:** 
+<details><summary>Løsning</summary> 
 
 ```javascript
 import React, { useContext } from 'react';
@@ -56,6 +58,8 @@ const ThemeToggleButton = () => {
 **Forklaring:**
 Dette viser hvordan du enkelt kan konsumere verdier fra en Context i en funksjonskomponent ved hjelp av `useContext` hook.
 
+</details>
+
 **Link:** [Using the React useContext Hook](https://reactjs.org/docs/hooks-reference.html#usecontext)
 
 ### **Oppgave 3: Deling av state med Context**
@@ -63,7 +67,7 @@ Dette viser hvordan du enkelt kan konsumere verdier fra en Context i en funksjon
 **Beskrivelse:**  
 Lag en `UserContext` som kan lagre informasjon om den innloggede brukeren. Dette skal inkludere navn og profilbilde. Bruk denne konteksten til å vise brukerinformasjon i en `UserProfile`-komponent ved hjelp av `useContext`. 
 
-**Løsning:** 
+<details><summary>Løsning</summary> 
 
 ```javascript
 import React, { createContext, useState } from 'react';
@@ -91,6 +95,8 @@ const UserProfile = () => {
 **Forklaring:**
 På samme måte som temaeksemplet, demonstrerer dette hvordan du kan opprette en global tilstand for brukerdata som kan være tilgjengelig for alle komponentene i applikasjonen.
 
+</details>
+
 **Link:** [Sharing state using Context](https://kentcdodds.com/blog/application-state-management-with-react)
 
 ### **Oppgave 4: Optimalisering av Context-renders**
@@ -99,7 +105,7 @@ På samme måte som temaeksemplet, demonstrerer dette hvordan du kan opprette en
 Bygg videre på oppgave 3 ved å optimalisere hvordan `UserContext` re-renders. Forsikre deg om at komponenter som bruker `UserContext` kun oppdateres når nødvendig.   
 **Link:** [Optimizing context value](https://reactjs.org/docs/context.html#contextprovider)
 
-**Løsning:** 
+<details><summary>Løsning</summary> 
 
 **Tips:**
 1. **Bruk `React.memo`:** Dette vil forhindre en komponent i å re-rendre med mindre dens props endrer seg.
@@ -108,3 +114,5 @@ Bygg videre på oppgave 3 ved å optimalisere hvordan `UserContext` re-renders. 
 
 **Forklaring:**
 Rådene her er fokusert på optimalisering for å sikre at komponenter som konsumerer Contexts ikke blir re-rendret unødvendig, noe som kan påvirke ytelsen i en React-applikasjon.
+
+</details>

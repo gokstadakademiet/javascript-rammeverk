@@ -6,7 +6,7 @@ TARGET_FILE="ukesoppgaver.md"
 
 echo "Generating markdown file from files in $SOURCE_DIR"
 
-echo "# Oppgavesett: Interaktiv Online CV Webapplikasjon: Debugging & Testing" > "$TARGET_FILE"
+echo "# Oppgavesett: Interaktiv Online CV Webapplikasjon: \`React Router Dom\` & \`useContext\`" > "$TARGET_FILE"
 
 echo "# Innholdsfortegnelse 
 

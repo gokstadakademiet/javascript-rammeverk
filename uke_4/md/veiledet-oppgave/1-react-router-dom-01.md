@@ -6,7 +6,7 @@
 Installer og konfigurer `react-router-dom` v6 i din eksisterende CV webapplikasjon. Sett opp grunnleggende ruting for hjemmesiden og en side som viser detaljert CV informasjon.
 
 
-**Løsning:** 
+<details><summary>Løsning</summary> 
 
 For å starte, installer `react-router-dom` via npm:
 
@@ -34,6 +34,8 @@ const App = () => {
 **Forklaring:**  
 Vi har installert `react-router-dom` v6 og satt opp ruter for både hjemmesiden og CV-siden ved hjelp av `<Router>`, `<Routes>` og `<Route>` komponentene.
 
+</details>
+
 **Link:** [React Router Getting Started](https://reactrouter.com/docs/en/v6/getting-started/overview)
 
 ### **Oppgave 2: Navigasjon mellom sider**
@@ -41,7 +43,7 @@ Vi har installert `react-router-dom` v6 og satt opp ruter for både hjemmesiden 
 **Beskrivelse:**  
 Lag en enkel navigasjonsmeny som lar brukere veksle mellom hovedsiden og den detaljerte CV-siden. Utforsk forskjellen mellom `Link` og `NavLink`.
 
-**Løsning:** 
+<details><summary>Løsning</summary> 
 
 Bruk `Link` og `NavLink` for å lage en enkel navigasjon:
 
@@ -61,6 +63,8 @@ const Navigation = () => {
 **Forklaring:**  
 `Link` og `NavLink` blir brukt for navigasjon. Forskjellen er at `NavLink` gir mulighet for å style den aktive lenken ved hjelp av `activeClassName` eller `activeStyle`.
 
+</details>
+
 **Link:** [React Router Links and Navigation](https://reactrouter.com/docs/en/v6/api#link)
 
 ### **Oppgave 3: Nested Routes**
@@ -70,7 +74,7 @@ På den detaljerte CV-siden, lag nestede ruter som viser forskjellige seksjoner 
 
 **Link:** [React Router Nested Routes](https://reactrouter.com/docs/en/v6/examples/nesting)
 
-**Løsning:** 
+<details><summary>Løsning</summary> 
 
 ```javascript
 const CvPage = () => {
@@ -90,12 +94,14 @@ const CvPage = () => {
 **Forklaring:**  
 Ved hjelp av nested ruting, kan vi vise forskjellige deler av CV-en basert på den valgte stien.
 
+</details>
+
 ### **Oppgave 4: Bruk av useParams**
 **Mål:** Forstå hvordan man henter rute-parametere ved hjelp av `useParams` hook.
 **Beskrivelse:**  
 Legg til en funksjon som lar brukere se detaljert informasjon om en bestemt jobberfaring ved å klikke på den. Bruk `useParams` for å hente IDen for jobberfaringen fra URLen og vise den relevante informasjonen.
 
-**Løsning:** 
+<details><summary>Løsning</summary> 
 
 ```javascript
 import { useParams } from 'react-router-dom';
@@ -110,3 +116,5 @@ const JobDetail = () => {
 Med `useParams`, kan vi hente ut parametre fra URLen, som for eksempel IDen til en jobberfaring.
 
 **Link:** [React Router useParams](https://reactrouter.com/docs/en/v6/api#useparams)
+
+</details>
