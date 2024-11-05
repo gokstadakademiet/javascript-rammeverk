@@ -1,6 +1,6 @@
 ## Innføring i `Jest` og `Debugging` teknikker
 
-### **Oppgave 1: Basic Logging**
+### **Oppgave 1: Basic Loggingggg**
 
 **Mål:** Introduser logging for å spore hendelser i applikasjonen.
 
