@@ -2,7 +2,7 @@
 
 ### **Introduksjon:**
 
-Redux Toolkit er den offisielle, opinionated, batteri-inkluderte verktøykassen for Redux. Den lar deg skrive Redux-logikk med færre kodelinjer, og det blir enklere å forholde seg til. I disse oppgavene vil vi videreutvikle vår 'Interaktiv Online CV Webapplikasjon' ved å inkorporere Redux Toolkit.
+Redux Toolkit er den offisielle verktøykassen for Redux. Den lar deg skrive Redux-logikk med færre kodelinjer, og det blir enklere å forholde seg til. I disse oppgavene vil vi videreutvikle vår 'Interaktiv Online CV Webapplikasjon' ved å inkorporere Redux Toolkit.
 
 ### **Oppgave 1: Installer Redux Toolkit**
 
@@ -15,11 +15,6 @@ Redux Toolkit er den offisielle, opinionated, batteri-inkluderte verktøykassen 
 npm install @reduxjs/toolkit react-redux
 ```
 
-> [!IMPORTANT]  
-> Sørg for at du har en fungerende internettforbindelse når du kjører installasjonskommandoen.
-
-**Begrunnelse:**
-
 Redux Toolkit er et bibliotek som hjelper deg med å håndtere tilstanden i din applikasjon på en enklere og mer strukturert måte. `react-redux` er et bindingsbibliotek som lar deg bruke Redux sammen med React.
 
 ### **Oppgave 2: Sett opp Redux Store med `configureStore`**
@@ -28,9 +23,6 @@ Redux Toolkit er et bibliotek som hjelper deg med å håndtere tilstanden i din 
 
 1. I `store.js`, bruk `configureStore` fra Redux Toolkit for å opprette en Redux store.
 2. Definer en `rootReducer` som kombinerer alle dine reducere (du kan bruke `combineReducers` fra `redux` hvis nødvendig).
-
-> [!TIP]
-> Redux Toolkit inneholder `combineReducers` innebygd i `configureStore`, så du trenger ikke å importere den separat!
 
 <details><summary>Løsning</summary>
 
@@ -62,9 +54,6 @@ En Redux store er en sentral del av Redux-arkitekturen. Den holder hele tilstand
 1. Bruk `createSlice` fra Redux Toolkit for å lage en slice for `experiences`.
 2. Definer tilstanden, reducerne, og handlingene i samme fil.
 3. Eksporter de nødvendige handlingene og reducere.
-
-> [!NOTE]  
-> `createSlice` vil generere action creators for deg automatisk!
 
 <details><summary>Løsning</summary>
 
@@ -98,6 +87,26 @@ En slice i Redux Toolkit er en samling av Redux-logikk for en bestemt del av til
 
 ### **Oppgave 4: Bruk `useDispatch` og `useSelector` fra Redux Toolkit**
 
+**Kodeeksempel:**
+
+```javascript
+import React, { useState } from 'react';
+
+const ExperienceList = () => {
+  const [experiences, setExperiences] = useState([]);
+
+  const handleAdd = (experience) => {
+    setExperiences([...experiences, experience]);
+  }
+
+  const handleRemove = (id) => {
+    setExperiences(experiences.filter(exp => exp.id !== id));
+  }
+
+  // Render logikk for listen her...
+}
+```
+
 **Instrukser:**
 
 1. Oppdater `ExperienceList` komponenten for å bruke `useDispatch` og `useSelector` fra `react-redux`.
@@ -127,7 +136,7 @@ const ExperienceList = () => {
 
 **Begrunnelse:**
 
-`useSelector` er en hook som lar deg hente tilstanden fra Redux store i en funksjonell komponent. `useDispatch` er en hook som lar deg sende handlinger til Redux store. Disse hookene erstatter behovet for `mapStateToProps` og `mapDispatchToProps`, og gjør koden din mer konsis og enklere å lese.
+`useSelector` er en hook som lar deg hente tilstanden fra Redux store i en funksjonell komponent. `useDispatch` er en hook som lar deg sende handlinger til Redux store. Disse het tidligere `mapStateToProps` og `mapDispatchToProps`, men er erstattet av de nye hookene gjør koden din mer konsis og enklere å lese.
 
 </details>
 

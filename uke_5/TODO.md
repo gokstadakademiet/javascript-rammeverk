@@ -1,7 +1,7 @@
 # TODO
 
-- [] Leseliste
-- [ ] Ukesoppgaver
-- [ ] Teams Tekst
+- [x] Leseliste
+- [x] Ukesoppgaver
+- [x] Teams Tekst
 - [ ] Ukens Plan
-- [ ] Lese out Outlet
+- [x] Oppgave 4 inneholder gammel `mapStateToProps`..

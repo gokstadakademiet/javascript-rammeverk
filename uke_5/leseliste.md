@@ -8,3 +8,11 @@ Vi oppfordrer deg til å lese gjennom disse artiklene grundig, da de vil gi deg 
 
 ## Redux
 
+- [Redux - Complete Tutorial (with Redux Toolkit)](https://www.youtube.com/watch?v=5yEG6GhoJBs)
+- [Understanding Redux Concept in 5 Minutes | What is Redux ? | Redux Analogy | Redux Lifecycle](https://www.youtube.com/watch?v=qNjNn9BCWCc)
+- [Redux in 100 Seconds](https://www.youtube.com/watch?v=_shA5Xwe8_4)
+- [Getting Started with Redux](https://redux.js.org/introduction/getting-started)
+- [Redux Fundamentals - alle kapitlene](https://redux.js.org/tutorials/fundamentals/part-1-overview)
+- [Learning Redux Toolkit](https://www.linkedin.com/learning/learning-redux-toolkit/why-you-should-take-this-course?u=171076145)
+- [React: State Management](https://www.linkedin.com/learning/react-state-management-22688323/react-state-management?u=171076145)
+- [Understanding Redux: A tutorial with examples](https://blog.logrocket.com/understanding-redux-tutorial-examples/)
