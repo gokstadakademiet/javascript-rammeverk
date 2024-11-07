@@ -19,7 +19,7 @@
 
 ## Innføring i `Jest` og `Debugging` teknikker
 
-### **Oppgave 1: Basic Logging**
+### **Oppgave 1: Basic Loggingggg**
 
 **Mål:** Introduser logging for å spore hendelser i applikasjonen.
 
@@ -195,7 +195,7 @@ Ta et eksisterende React JS-prosjekt for CV-applikasjonen og integrer TypeScript
 **Mål:** Forbedre feilsøkingsferdigheter ved å identifisere og rette feil i React-komponenter.
 
 **Beskrivelse:**  
-I denne oppgaven skal du finne og rette feil i en gitt React-komponent. Koden nedenfor er ment å vise en liste over brukere med navn og alder, men den inneholder en feil som forhindrer riktig visning. Din oppgave er å finne og rette feilen.
+I denne oppgaven skal du finne og rette feil i en gitt React-komponent. Koden nedenfor er ment å vise en liste over brukere med navn og alder, men den inneholder en feil som forhindrer riktig visning. `id` skal være en et tall, `navn` skal være en string og `age` skal være et tall. Din oppgave er å finne og rette feilen.
 
 **Link:** [React Documentation](https://reactjs.org/docs/getting-started.html)
 
@@ -233,13 +233,13 @@ UserList.propTypes = {
 export default UserList;
 ```
 
-**Initial list of users with errors:**
+**Initial list of users:**
 
 ```javascript
 const users = [
-  { id: "1", name: 'Alice', age: 25 }, // Incorrect type for id
-  { id: "2", name: 'Bob' }, // Missing age prop and incorrect type for id
-  { id: "3", name: 'Charlie', age: 'thirty' } // Incorrect type for age and id
+  { id: "1", name: 'Alice', age: 25 }, 
+  { id: "2", name: 'Bob' }, 
+  { id: "3", name: 'Charlie', age: 'thirty' } 
 ];
 ```
 
@@ -293,14 +293,13 @@ Her er koden for `Profile`-komponenten:
 
   export default Profile;
 
-  // Usage example with incorrect props
   const App = () => {
     return (
       <Profile
         name="John Doe"
-        age="30" // Error: age should be a number
+        age="30"
         experience={[
-          { title: "Developer", years: "5" }, // Error: years should be a number
+          { title: "Developer", years: "5" }, 
           { title: "Manager", years: 3 }
         ]}
       />
@@ -309,7 +308,7 @@ Her er koden for `Profile`-komponenten:
 
   export default App;
   ```
-  
+
 
 
 
