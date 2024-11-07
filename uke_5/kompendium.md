@@ -54,7 +54,7 @@ Redusere er rene funksjoner som tar forrige tilstand og en handling, og returner
 - [Offisiell Redux Dokumentasjon](https://redux.js.org/)
 - [Redux Fundamentals](https://redux.js.org/tutorials/fundamentals/part-1-overview)
 
-# **11. Innføring i `Redux Toolkit`**
+# **6. Innføring i `Redux Toolkit`**
 
 ## Innledning
 

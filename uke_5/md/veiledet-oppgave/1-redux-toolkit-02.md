@@ -49,6 +49,7 @@ export default experiencesSlice.reducer;
 **Tips:** 
 Det anbefales å lese [offisiell dokumentasjon](https://redux-toolkit.js.org/rtk-query/overview) før du starter.
 
+> [!TIP]  
 > Når du er ferdig med oppgavene, kan du prøve å utforske mer av funksjonene som Redux Toolkit tilbyr. Toolkit er designet for å gjøre Redux enklere og mer effektivt, så det er definitivt verdt å dykke dypere inn i det!
 
 <details><summary>Løsning</summary>
