@@ -1,4 +1,4 @@
-### **Oppgave 5: Implementer asynkron logikk med `createAsyncThunk`**
+### **Oppgave 6: Implementer asynkron logikk med `createAsyncThunk`**
 
 **Instrukser:**
 
