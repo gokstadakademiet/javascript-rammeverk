@@ -1,4 +1,4 @@
-# Oppgavesett: Interaktiv Online CV Webapplikasjon: `React Router Dom` & `useContext`
+# Oppgavesett: Interaktiv Online CV Webapplikasjon: `Redux Toolkit`
 # Innholdsfortegnelse 
 
 
@@ -36,7 +36,7 @@ Redux Toolkit er et bibliotek som hjelper deg med å håndtere tilstanden i din 
 > [!TIP]
 > Redux Toolkit inneholder `combineReducers` innebygd i `configureStore`, så du trenger ikke å importere den separat!
 
-**Løsning**
+<details><summary>Løsning</summary>
 
 **Eksempel:**
 
@@ -57,6 +57,8 @@ export default store;
 
 En Redux store er en sentral del av Redux-arkitekturen. Den holder hele tilstanden til applikasjonen din. `configureStore` er en funksjon fra Redux Toolkit som gjør det enklere å sette opp en store med fornuftige standardinnstillinger.
 
+</details>
+
 ### **Oppgave 3: Lag en Slice for Erfaringer**
 
 **Instrukser:**
@@ -68,9 +70,7 @@ En Redux store er en sentral del av Redux-arkitekturen. Den holder hele tilstand
 > [!NOTE]  
 > `createSlice` vil generere action creators for deg automatisk!
 
-**Løsning**
-
-<details><summary>Se full kode</summary>
+<details><summary>Løsning</summary>
 
 ```javascript
 import { createSlice } from '@reduxjs/toolkit';
@@ -92,11 +92,13 @@ export const { addExperience, removeExperience } = experiencesSlice.actions;
 
 export default experiencesSlice.reducer;
 ```
-</details>
+
 
 **Begrunnelse:**
 
 En slice i Redux Toolkit er en samling av Redux-logikk for en bestemt del av tilstanden. `createSlice` er en funksjon som lar deg definere initial tilstand, reducer-funksjoner, og action creators på en enkel måte. Dette gjør koden din mer lesbar og vedlikeholdbar.
+
+</details>
 
 ### **Oppgave 4: Bruk `useDispatch` og `useSelector` fra Redux Toolkit**
 
@@ -105,9 +107,7 @@ En slice i Redux Toolkit er en samling av Redux-logikk for en bestemt del av til
 1. Oppdater `ExperienceList` komponenten for å bruke `useDispatch` og `useSelector` fra `react-redux`.
 2. Erstatt alle `mapStateToProps` og `mapDispatchToProps` logikken med de nevnte hooks.
 
-**Løsning**
-
-<details><summary>Se full kode</summary>
+<details><summary>Løsning</summary>
 
 ```javascript
 import { useDispatch, useSelector } from 'react-redux';
@@ -128,11 +128,12 @@ const ExperienceList = () => {
   // Render logikk for listen her...
 }
 ```
-</details>
 
 **Begrunnelse:**
 
 `useSelector` er en hook som lar deg hente tilstanden fra Redux store i en funksjonell komponent. `useDispatch` er en hook som lar deg sende handlinger til Redux store. Disse hookene erstatter behovet for `mapStateToProps` og `mapDispatchToProps`, og gjør koden din mer konsis og enklere å lese.
+
+</details>
 
 ### **Oppgave 5: Feilsøking i Redux Toolkit**
 
@@ -148,7 +149,6 @@ I denne oppgaven skal du feilsøke en kode som inneholder en feil. Koden nedenfo
 
 **Kodeeksempel:**
 
-<details><summary>Se full kode</summary>
 
 ```javascript
 import { createSlice } from '@reduxjs/toolkit';
@@ -170,17 +170,14 @@ export const { addExperience, removeExperience } = experiencesSlice.actions;
 
 export default experiencesSlice.reducer;
 ```
-</details>
 
-### **Løsning:**
+<details><summary>Løsning</summary>
 
 **Feil:**
 
 Feilen i koden er i `removeExperience`-reduceren. Den nåværende implementeringen filtrerer ut elementer som har samme `id` som `action.payload.id`, men den burde filtrere ut elementer som har en annen `id` enn `action.payload.id`.
 
 **Rettet kode:**
-
-<details><summary>Se full kode</summary>
 
 ```javascript
 import { createSlice } from '@reduxjs/toolkit';
@@ -202,34 +199,29 @@ export const { addExperience, removeExperience } = experiencesSlice.actions;
 
 export default experiencesSlice.reducer;
 ```
-</details>
 
 **Forklaring:**
 
 Den opprinnelige `removeExperience`-reduceren filtrerte ut elementer som hadde samme `id` som `action.payload.id`, noe som resulterte i at ingen elementer ble fjernet fra listen. Ved å endre betingelsen til `exp.id !== action.payload.id`, fjernes elementet med den spesifikke `id` fra listen, som forventet.
--e 
+
+</details>
 
 
 ### **Oppgave 5: Implementer asynkron logikk med `createAsyncThunk`**
 
-I denne oppgaven skal vi bruke `createAsyncThunk` fra Redux Toolkit for å håndtere asynkron logikk, som for eksempel API-kall. Vi vil også legge til ekstra reducers for de ulike stadiene av asynkrone handlinger: `pending`, `fulfilled`, og `rejected`.
+**Instrukser:**
 
-#### **Steg 1: Importere nødvendige funksjoner**
+1. Bruk `createAsyncThunk` fra Redux Toolkit for å håndtere asynkron logikk (som f.eks. API-kall).
+2. Legg til ekstra reducers for de ulike stadiene av asynkrone handlinger: `pending`, `fulfilled`, og `rejected`.
 
-Først må vi importere `createSlice` og `createAsyncThunk` fra Redux Toolkit. `createSlice` brukes til å lage en slice av Redux state, mens `createAsyncThunk` brukes til å lage asynkrone handlinger.
+**Tips:** 
+`createAsyncThunk` håndterer automatisk de forskjellige fasene av asynkrone handlinger for deg!
 
-<details><summary>Se full kode</summary>
+<details><summary>Løsning</summary>
+
 ```javascript
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-```
-</details>
 
-#### **Steg 2: Definere en asynkron handling**
-
-Vi bruker `createAsyncThunk` til å definere en asynkron handling som henter data fra en API. Denne funksjonen tar to argumenter: en streng som identifiserer handlingen, og en asynkron funksjon som utfører API-kallet.
-
-<details><summary>Se full kode</summary>
-```javascript
 export const fetchExperiences = createAsyncThunk(
   'experiences/fetchExperiences',
   async () => {
@@ -238,91 +230,46 @@ export const fetchExperiences = createAsyncThunk(
     return data;
   }
 );
-```
-</details>
 
-> [!IMPORTANT]  
-> Sørg for å erstatte `'API_URL_HERE'` med den faktiske URL-en til API-et du ønsker å hente data fra.
-
-#### **Steg 3: Opprette en slice**
-
-Nå skal vi opprette en slice ved hjelp av `createSlice`. En slice inneholder initial state, reducers, og ekstra reducers. Initial state er den opprinnelige tilstanden til slice, mens reducers er funksjoner som definerer hvordan state skal oppdateres.
-
-<details><summary>Se full kode</summary>
-```javascript
 const experiencesSlice = createSlice({
   name: 'experiences',
   initialState: [],
   reducers: {},
   extraReducers: builder => {
     builder
-      .addCase(fetchExperiences.pending, (state) => {
-        // Håndterer pending state
-      })
       .addCase(fetchExperiences.fulfilled, (state, action) => {
         return action.payload;
       })
-      .addCase(fetchExperiences.rejected, (state) => {
-        // Håndterer rejected state
-      });
   }
 });
-```
-</details>
 
-> [!NOTE]  
-> `extraReducers` brukes til å håndtere de ulike stadiene av asynkrone handlinger.
-
-#### **Steg 4: Håndtere ulike stadier av asynkrone handlinger**
-
-Vi bruker `builder` i `extraReducers` for å håndtere de ulike stadiene av asynkrone handlinger: `pending`, `fulfilled`, og `rejected`. Når handlingen er `pending`, kan vi for eksempel vise en lastemelding. Når handlingen er `fulfilled`, oppdaterer vi state med dataen vi har hentet. Når handlingen er `rejected`, kan vi håndtere feilmeldinger.
-
-<details><summary>Se full kode</summary>
-```javascript
-const experiencesSlice = createSlice({
-  name: 'experiences',
-  initialState: { data: [], status: 'idle', error: null },
-  reducers: {},
-  extraReducers: builder => {
-    builder
-      .addCase(fetchExperiences.pending, (state) => {
-        state.status = 'loading';
-      })
-      .addCase(fetchExperiences.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        state.data = action.payload;
-      })
-      .addCase(fetchExperiences.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.error.message;
-      });
-  }
-});
-```
-</details>
-
-> [!TIP]
-> Initial state kan inneholde flere egenskaper som `status` og `error` for å håndtere ulike stadier og feil i asynkrone handlinger.
-
-#### **Steg 5: Eksportere reduceren**
-
-Til slutt eksporterer vi reduceren slik at den kan brukes i Redux store.
-
-<details><summary>Se full kode</summary>
-```javascript
 export default experiencesSlice.reducer;
 ```
+
 </details>
 
 ### **Oppgave 6 (Valgfri): Introduksjon til `RTK Query`**
 
-I denne oppgaven skal vi utforske RTK Query, en kraftig datahentings- og caching-mekanisme innebygd i Redux Toolkit. Vi vil implementere en funksjonalitet i CV-appen som henter data fra en API ved hjelp av RTK Query.
+**Instrukser:**
 
-#### **Steg 1: Definere en API Slice**
+1. Utforsk RTK Query, en kraftig datahentings- og caching-mekanisme innebygd i Redux Toolkit.
+2. Implementer en funksjonalitet i CV-appen som henter data fra en API ved hjelp av RTK Query.
 
-Med RTK Query kan du definere en API slice ved hjelp av `createApi`. Denne funksjonen håndterer alle CRUD-operasjonene for dine data. Vi starter med å importere nødvendige funksjoner og definere en API slice.
+**Tips:** 
+Det anbefales å lese [offisiell dokumentasjon](https://redux-toolkit.js.org/rtk-query/overview) før du starter.
 
-<details><summary>Se full kode</summary>
+> Når du er ferdig med oppgavene, kan du prøve å utforske mer av funksjonene som Redux Toolkit tilbyr. Toolkit er designet for å gjøre Redux enklere og mer effektivt, så det er definitivt verdt å dykke dypere inn i det!
+
+<details><summary>Løsning</summary>
+
+Denne oppgaven er mer av en utforskende natur. Det beste vil være å følge [offisiell dokumentasjon](https://redux-toolkit.js.org/rtk-query/overview) for å implementere RTK Query.
+
+#### **Utforskende Eksempler med RTK Query**
+
+#### **1. Definere en API Slice for Erfaringer:**
+
+Med RTK Query, kan du definere en API slice ved hjelp av `createApi` som vil håndtere alle CRUD-operasjonene for dine erfaringer.
+
 ```javascript
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
@@ -344,16 +291,11 @@ export const api = createApi({
 
 export const { useGetExperiencesQuery, useAddExperienceMutation } = api;
 ```
-</details>
 
-> [!CAUTION]
-> Sørg for at `baseUrl` er korrekt satt opp for å unngå feil ved API-kall.
+#### **2. Hent Erfaringer i en Komponent:**
 
-#### **Steg 2: Hente data i en komponent**
+Bruk den genererte hook `useGetExperiencesQuery` for å hente erfaringene.
 
-Vi bruker den genererte hook `useGetExperiencesQuery` for å hente data i en React-komponent. Denne hooken returnerer data, en lastestatus, og en feilmelding hvis noe går galt.
-
-<details><summary>Se full kode</summary>
 ```javascript
 import { useGetExperiencesQuery } from './apiSlice';
 
@@ -363,25 +305,14 @@ const ExperienceList = () => {
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error loading experiences</div>;
 
-  return (
-    <ul>
-      {experiences.map(experience => (
-        <li key={experience.id}>{experience.title}</li>
-      ))}
-    </ul>
-  );
+  // Render logikk for listen her...
 }
 ```
-</details>
 
-> [!TIP]
-> Bruk `isLoading` og `isError` for å vise passende meldinger til brukeren mens data hentes eller hvis det oppstår en feil.
+#### **3. Legg til en ny Erfaring:**
 
-#### **Steg 3: Legge til ny data**
+Bruk den genererte mutation hook `useAddExperienceMutation` for å legge til en ny erfaring.
 
-Vi bruker den genererte mutation hook `useAddExperienceMutation` for å legge til ny data. Denne hooken returnerer en funksjon som kan kalles for å utføre mutasjonen.
-
-<details><summary>Se full kode</summary>
 ```javascript
 import { useAddExperienceMutation } from './apiSlice';
 
@@ -392,23 +323,15 @@ const AddExperienceForm = () => {
     addExperience(newExperience);
   }
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" name="title" placeholder="Experience Title" />
-      <button type="submit">Add Experience</button>
-    </form>
-  );
+  // Render form logikk her...
 }
 ```
+
+Disse eksemplene gir en enkel introduksjon til hvordan RTK Query kan brukes i sammenheng med prosjektet ditt. For en dypere forståelse og ytterligere funksjoner (som oppdatering, sletting, caching, osv.), sjekk [offisiell RTK Query dokumentasjon](https://redux-toolkit.js.org/rtk-query/overview).
+
 </details>
-
-> [!NOTE]  
-> Sørg for å validere inputdata før du sender den til API-et for å unngå feil.
-
-Disse eksemplene gir en enkel introduksjon til hvordan RTK Query kan brukes i prosjektet ditt. For en dypere forståelse og ytterligere funksjoner, som oppdatering, sletting, og caching, anbefales det å lese den [offisielle RTK Query dokumentasjonen](https://redux-toolkit.js.org/rtk-query/overview).
 
 **Kilder**:
 - [Redux Toolkit Official Documentation](https://redux-toolkit.js.org/)
--e 
 
 
