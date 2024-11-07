@@ -144,7 +144,7 @@ const ExperienceList = () => {
 
 **Introduksjon:**
 
-I denne oppgaven skal du feilsøke en kode som inneholder en feil. Koden nedenfor er ment å legge til og fjerne erfaringer fra en liste. Din oppgave er å finne og rette feilen.
+I denne oppgaven skal du feilsøke en kode som inneholder en feil. Koden nedenfor er ment å legge til og fjerne prosjekter fra en liste. Din oppgave er å finne og rette feilen.
 
 **Instrukser:**
 
@@ -154,59 +154,58 @@ I denne oppgaven skal du feilsøke en kode som inneholder en feil. Koden nedenfo
 
 **Kodeeksempel:**
 
-
 ```javascript
 import { createSlice } from '@reduxjs/toolkit';
 
-const experiencesSlice = createSlice({
-  name: 'experiences',
+const projectsSlice = createSlice({
+  name: 'projects',
   initialState: [],
   reducers: {
-    addExperience: (state, action) => {
+    addProject: (state, action) => {
       state.push(action.payload);
     },
-    removeExperience: (state, action) => {
-      return state.filter(exp => exp.id === action.payload.id);
+    removeProject: (state, action) => {
+      return state.filter(proj => proj.id === action.payload.id);
     }
   }
 });
 
-export const { addExperience, removeExperience } = experiencesSlice.actions;
+export const { addProject, removeProject } = projectsSlice.actions;
 
-export default experiencesSlice.reducer;
+export default projectsSlice.reducer;
 ```
 
 <details><summary>Løsning</summary>
 
 **Feil:**
 
-Feilen i koden er i `removeExperience`-reduceren. Den nåværende implementeringen filtrerer ut elementer som har samme `id` som `action.payload.id`, men den burde filtrere ut elementer som har en annen `id` enn `action.payload.id`.
+Feilen i koden er i `removeProject`-reduceren. Den nåværende implementeringen filtrerer ut elementer som har samme `id` som `action.payload.id`, men den burde filtrere ut elementer som har en annen `id` enn `action.payload.id`.
 
 **Rettet kode:**
 
 ```javascript
 import { createSlice } from '@reduxjs/toolkit';
 
-const experiencesSlice = createSlice({
-  name: 'experiences',
+const projectsSlice = createSlice({
+  name: 'projects',
   initialState: [],
   reducers: {
-    addExperience: (state, action) => {
+    addProject: (state, action) => {
       state.push(action.payload);
     },
-    removeExperience: (state, action) => {
-      return state.filter(exp => exp.id !== action.payload.id);
+    removeProject: (state, action) => {
+      return state.filter(proj => proj.id !== action.payload.id);
     }
   }
 });
 
-export const { addExperience, removeExperience } = experiencesSlice.actions;
+export const { addProject, removeProject } = projectsSlice.actions;
 
-export default experiencesSlice.reducer;
+export default projectsSlice.reducer;
 ```
 
 **Forklaring:**
 
-Den opprinnelige `removeExperience`-reduceren filtrerte ut elementer som hadde samme `id` som `action.payload.id`, noe som resulterte i at ingen elementer ble fjernet fra listen. Ved å endre betingelsen til `exp.id !== action.payload.id`, fjernes elementet med den spesifikke `id` fra listen, som forventet.
+Den opprinnelige `removeProject`-reduceren filtrerte ut elementer som hadde samme `id` som `action.payload.id`, noe som resulterte i at ingen elementer ble fjernet fra listen. Ved å endre betingelsen til `proj.id !== action.payload.id`, fjernes elementet med den spesifikke `id` fra listen, som forventet.
 
 </details>
