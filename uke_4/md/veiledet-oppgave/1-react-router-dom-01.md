@@ -1,6 +1,6 @@
 ## Oppgavesett: Interaktiv Online CV Webapplikasjon: `React router dom V`
 
-### **Oppgave 1: Sette opp react-router-dom v6**
+### **Oppgave 1: Sette opp react-router-dom V6**
 **Mål:** Bli kjent med installasjon og oppsett av `react-router-dom` versjon 6 i din React applikasjon.
 **Beskrivelse:**  
 Installer og konfigurer `react-router-dom` v6 i din eksisterende CV webapplikasjon. Sett opp grunnleggende ruting for hjemmesiden og en side som viser detaljert CV informasjon.

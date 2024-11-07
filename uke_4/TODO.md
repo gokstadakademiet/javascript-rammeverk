@@ -1,7 +1,8 @@
 # TODO
 
 - [x] Leseliste
-- [ ] Ukesoppgaver
+- [x] Ukesoppgaver
 - [x] Teams Tekst
-- [ ] Ukens Plan
-- [ ] Lese out Outlet
+- [?] Slides
+- [-] Ukens Plan
+- [x] Lese om Outlet
