@@ -103,8 +103,7 @@ export default projectsSlice.reducer;
 
 
 
-
-### **Oppgave 5: Implementer asynkron logikk med `createAsyncThunk`**
+### **Oppgave 6: Implementer asynkron logikk med `createAsyncThunk`**
 
 **Instrukser:**
 
@@ -115,7 +114,7 @@ export default projectsSlice.reducer;
 `createAsyncThunk` håndterer automatisk de forskjellige fasene av asynkrone handlinger for deg!
 
 
-### **Oppgave 6 (Valgfri): Introduksjon til `RTK Query`**
+### **Oppgave 7 (Valgfri): Introduksjon til `RTK Query`**
 
 **Instrukser:**
 
@@ -131,5 +130,108 @@ Det anbefales å lese [offisiell dokumentasjon](https://redux-toolkit.js.org/rtk
 
 **Kilder**:
 - [Redux Toolkit Official Documentation](https://redux-toolkit.js.org/)
+
+
+### **Oppgave 8: Lag en Slice for Utdanning**
+
+**Introduksjon:**
+
+I denne oppgaven skal vi lage en ny slice for å håndtere utdanningsinformasjon i applikasjonen. Dette vil hjelpe oss med å organisere og administrere utdanningsdata på en strukturert måte.
+
+**Instrukser:**
+
+1. Bruk `createSlice` fra Redux Toolkit for å lage en slice for `education`.
+2. Definer initial tilstand, reducerne, og handlingene i samme fil.
+3. Eksporter de nødvendige handlingene og reducere.
+
+> [!NOTE]
+> Husk å oppdatere redux store med din nye reducer
+
+
+### **Oppgave 9: Bruk `useDispatch` og `useSelector` for Utdanning**
+
+**Introduksjon:**
+
+I denne oppgaven skal vi oppdatere en komponent for å bruke `useDispatch` og `useSelector` for å håndtere utdanningsdata. Dette vil gjøre komponenten mer interaktiv og koblet til Redux store.
+
+**Eksempelkode:**
+
+```javascript
+import React, { useState } from 'react';
+
+const EducationList = () => {
+  const [education, setEducation] = useState([]);
+
+  const handleAdd = (edu) => {
+    setEducation([...education, edu]);
+  }
+
+  const handleRemove = (id) => {
+    setEducation(education.filter(edu => edu.id !== id));
+  }
+
+  return (
+    <div>
+      <h2>Education List</h2>
+      <ul>
+        {education.map((edu) => (
+          <li key={edu.id}>
+            {edu.name}
+            <button onClick={() => handleRemove(edu.id)}>Remove</button>
+          </li>
+        ))}
+      </ul>
+      <button onClick={() => handleAdd({ id: Date.now(), name: 'New Education' })}>Add Education</button>
+    </div>
+  );
+}
+
+export default EducationList;
+```
+
+**Instrukser:**
+
+1. Oppdater `EducationList` komponenten for å bruke `useDispatch` og `useSelector` fra `react-redux`.
+
+
+### **Oppgave 10: Lag en Slice for Ferdigheter**
+
+**Introduksjon:**
+
+I denne oppgaven skal vi lage en ny slice for å håndtere ferdigheter i applikasjonen. Dette vil hjelpe oss med å organisere og administrere ferdighetsdata på en strukturert måte.
+
+**Instrukser:**
+
+1. Bruk `createSlice` fra Redux Toolkit for å lage en slice for `skills`.
+2. Definer initial tilstand, reducerne, og handlingene i samme fil.
+3. Eksporter de nødvendige handlingene og reducere.
+
+> [!NOTE]
+> Husk å oppdatere redux store med din nye reducer
+
+
+### **Oppgave 11: Bruk `useDispatch` og `useSelector` for Ferdigheter**
+
+**Introduksjon:**
+
+I denne oppgaven skal vi oppdatere en komponent for å bruke `useDispatch` og `useSelector` for å håndtere ferdighetsdata. Dette vil gjøre komponenten mer interaktiv og koblet til Redux store.
+
+**Instrukser:**
+
+1. Oppdater `SkillsList` komponenten for å bruke `useDispatch` og `useSelector` fra `react-redux`.
+
+
+### **Oppgave 12: Opprett en middleware for logging**
+
+**Introduksjon:**
+
+Middleware er en måte å utvide Redux med tilpasset funksjonalitet. I denne oppgaven skal vi opprette en middleware som logger alle handlinger som sendes til Redux store.
+
+**Instrukser:**
+
+1. Opprett en middleware som logger alle handlinger og tilstanden før og etter handlingen er behandlet.
+2. Legg til denne middleware i Redux store.
+
+
 
 
